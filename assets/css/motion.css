@@ -364,3 +364,31 @@ html, body { overflow-x: clip; }
   .rv.rv-left  { transform: translate3d(-28px, 0, 0); }
   .rv.rv-right { transform: translate3d(28px, 0, 0); }
 }
+
+/* ---------- móvil: orden del hero y tamaños ---------- */
+@media (max-width: 760px) {
+  /* título y texto → foto → botones */
+  .hero-card > div:last-of-type { gap: 22px !important; }
+  .hero-copy { display: contents !important; }
+  .hero-copy > :nth-child(1) { order: 1; justify-self: start; }
+  .hero-copy > :nth-child(2) { order: 2; }
+  .hero-copy > :nth-child(3) { order: 3; }
+  .hero-visual { order: 4; margin: 6px auto 4px !important; max-width: 320px; }
+  .hero-copy > :nth-child(4) { order: 5; justify-self: center; }
+
+  /* tarjetitas flotantes del hero más pequeñas */
+  .hero-visual [data-float] { zoom: .62; }
+  .hv-badge { zoom: .56; }
+
+  /* sobre mí: foto más contenida y chips pequeños */
+  .about-photo { width: min(78%, 290px) !important; }
+  #sobre-mi [data-float] { padding: 6px 10px !important; font-size: 11px !important; gap: 6px !important; }
+  #sobre-mi [data-float] > span { width: 5px !important; height: 5px !important; }
+  #sobre-mi [data-float="0"] { left: -8% !important; }
+  #sobre-mi [data-float="2"] { right: -16% !important; }
+  #sobre-mi [data-float="4"] { left: -8% !important; }
+  .about-photo > div:last-child { left: 4% !important; right: 4% !important; padding: 8px 8px 8px 14px !important; border-radius: 18px !important; }
+  .about-photo > div:last-child > span > span:first-child { font-size: 12.5px !important; }
+  .about-photo > div:last-child > span > span:last-child { font-size: 10.5px !important; }
+  .about-photo > div:last-child > a { width: 36px !important; height: 36px !important; border-radius: 11px !important; font-size: 13px !important; }
+}
