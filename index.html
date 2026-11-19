@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 46'%3E%3Crect width='46' height='46' rx='14' fill='%236D3FC9'/%3E%3Ctext x='23' y='29' text-anchor='middle' font-family='sans-serif' font-weight='600' font-size='16' fill='%23fff'%3EJG%3C/text%3E%3C/svg%3E">
 <link rel="preload" as="image" href="assets/img/jenny-hero.png">
-<link rel="stylesheet" href="assets/css/motion.css?v=5">
+<link rel="stylesheet" href="assets/css/motion.css?v=7">
 <script>
   // React se sirve localmente en vez de desde unpkg
   window.__resources = {
@@ -15,7 +15,7 @@
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('reduce-motion');
 </script>
 <script src="assets/js/dc-runtime.js"></script>
-<script defer src="assets/js/motion.js?v=5"></script>
+<script defer src="assets/js/motion.js?v=7"></script>
 </head>
 <body>
 <x-dc>
@@ -222,12 +222,12 @@ a:hover{color:#6D3FC9}
       <svg class="g g-float" data-depth="-20" sc-camel-view-box="0 0 120 30" style="left:22%;top:88%;width:110px;height:28px"><path class="g-squiggle" d="M2 15c10-12 20-12 30 0s20 12 30 0 20-12 30 0 20 12 26 0" fill="none" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round"></path></svg>
       <svg class="g g-spin-slow" data-depth="18" sc-camel-view-box="0 0 40 40" style="left:52%;top:40%;width:30px;height:30px"><path d="M20 4L36 34H4Z" fill="none" stroke="#7E9BF0" stroke-width="2" stroke-linejoin="round"></path></svg>
       <span class="g g-float" data-depth="-12" data-m="hide" style="left:27%;top:16%;width:54px;height:22px;border-radius:999px;border:1.6px solid rgba(139,92,246,.45)"></span>
-      <span class="hg-vtext">SCRUM ✦ AGILE ✦ LEAN ✦ KANBAN ✦ MEJORA CONTINUA</span>
+      <span class="hg-vtext">{{ t.vtext }}</span>
       <span class="hg-meta"><b>JG</b> / Agile Coach — 2026</span>
     </div>
-    <a href="#sobre-mi" class="scroll-cue" aria-label="Bajar a Sobre mí"><span class="sc-mouse"><i></i></span><span>Scroll</span></a>
+    <a href="#sobre-mi" class="scroll-cue" aria-label="{{ t.scrollAria }}"><span class="sc-mouse"><i></i></span><span>Scroll</span></a>
     <nav data-intro="0" class="hero-nav" style="position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px 32px;padding:28px clamp(20px,5vw,64px)">
-      <a href="#top" aria-label="Jenny Guzman, inicio" style="display:flex;align-items:center;gap:12px;color:#121735">
+      <a href="#top" aria-label="{{ t.homeAria }}" style="display:flex;align-items:center;gap:12px;color:#121735">
         <span style="position:relative;width:46px;height:46px;flex:none">
           <svg sc-camel-view-box="0 0 46 46" width="46" height="46" aria-hidden="true">
             <defs><linearGradient id="lgG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A78BFA"></stop><stop offset=".55" stop-color="#6D3FC9"></stop><stop offset="1" stop-color="#121735"></stop></linearGradient></defs>
@@ -243,22 +243,23 @@ a:hover{color:#6D3FC9}
         </span>
       </a>
       <div style="display:flex;flex-wrap:wrap;gap:6px clamp(28px,2.6vw,48px);font:500 clamp(14px,.95vw,16px) 'Poppins',sans-serif">
-        <a href="#sobre-mi">Sobre mí</a><a href="#expertise">Expertise</a><a href="#enfoque">Enfoque</a><a href="#proyectos">Proyectos</a>
+        <a href="#sobre-mi">{{ t.navAbout }}</a><a href="#expertise">Expertise</a><a href="#enfoque">{{ t.navApproach }}</a><a href="#proyectos">{{ t.navProjects }}</a>
       </div>
-      <div style="display:flex;align-items:center;gap:20px;font:500 14px 'Poppins',sans-serif">
+      <div class="nav-right" style="display:flex;align-items:center;gap:20px;font:500 14px 'Poppins',sans-serif">
+        <div class="lang-toggle" role="group" aria-label="{{ t.langLabel }}"><span class="lang-pill" style="transform:translateX({{ langX }})"></span><button type="button" lang="es" sc-camel-on-click="{{ setEs }}" aria-pressed="{{ isEs }}" style="color:{{ esColor }}">ES</button><button type="button" lang="en" sc-camel-on-click="{{ setEn }}" aria-pressed="{{ isEn }}" style="color:{{ enColor }}">EN</button></div>
         <a href="https://www.linkedin.com/">LinkedIn</a>
-        <a href="#contacto" style="padding:12px 22px;border-radius:14px;background:#E6E2FA;color:#121735;font-weight:600;transition:background .25s,transform .25s" style-hover="background:#D7D1F7;transform:translateY(-1px);color:#121735">Hablemos</a>
+        <a href="#contacto" style="padding:12px 22px;border-radius:14px;background:#E6E2FA;color:#121735;font-weight:600;transition:background .25s,transform .25s" style-hover="background:#D7D1F7;transform:translateY(-1px);color:#121735">{{ t.talk }}</a>
       </div>
     </nav>
 
     <div style="position:relative;z-index:1;flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:clamp(40px,4vw,80px);align-items:center;padding:clamp(24px,3vw,48px) clamp(20px,5vw,96px) clamp(56px,6vw,96px)">
       <div class="hero-copy" style="display:flex;flex-direction:column;gap:clamp(24px,2.2vw,36px);max-width:780px">
         <span style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.55);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.85);font:500 clamp(13px,.85vw,15px) 'Poppins',sans-serif;color:#3B4062"><span style="width:7px;height:7px;border-radius:50%;background:#8B5CF6"></span>Scrum Master · Agile Coach</span>
-        <h1 style="margin:0;font:600 clamp(34px,3.1vw,58px)/1.1 'Poppins',sans-serif;letter-spacing:-.03em;color:#121735;text-wrap:balance">Transformo equipos <span style="position:relative;display:inline-block;white-space:nowrap">y <span style="background:linear-gradient(90deg,#8B5CF6,#5B4FC9 50%,#121735);-webkit-background-clip:text;background-clip:text;color:transparent">construyo resultados.</span><svg sc-camel-view-box="0 0 300 20" sc-camel-preserve-aspect-ratio="none" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:-10px;width:100%;height:16px"><path class="draw-line" d="M4 14C60 4 120 4 170 9S260 15 296 5" fill="none" stroke="#C4A8FF" stroke-width="5" stroke-linecap="round" sc-camel-path-length="1"></path></svg></span></h1>
-        <p style="margin:0;font:italic 400 clamp(14px,.95vw,17px)/1.7 'Poppins',sans-serif;color:#3B4062;max-width:520px;text-wrap:pretty">Acompaño equipos y organizaciones en su adopción ágil, impulsando la colaboración y la entrega continua de valor.</p>
+        <h1 style="margin:0;font:600 clamp(34px,3.1vw,58px)/1.1 'Poppins',sans-serif;letter-spacing:-.03em;color:#121735;text-wrap:balance">{{ t.h1a }}<span style="position:relative;display:inline-block;white-space:nowrap">{{ t.h1b }} <span style="background:linear-gradient(90deg,#8B5CF6,#5B4FC9 50%,#121735);-webkit-background-clip:text;background-clip:text;color:transparent">{{ t.h1c }}</span><svg sc-camel-view-box="0 0 300 20" sc-camel-preserve-aspect-ratio="none" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:-10px;width:100%;height:16px"><path class="draw-line" d="M4 14C60 4 120 4 170 9S260 15 296 5" fill="none" stroke="#C4A8FF" stroke-width="5" stroke-linecap="round" sc-camel-path-length="1"></path></svg></span></h1>
+        <p style="margin:0;font:italic 400 clamp(14px,.95vw,17px)/1.7 'Poppins',sans-serif;color:#3B4062;max-width:520px;text-wrap:pretty">{{ t.heroP }}</p>
         <div style="display:inline-flex;flex-wrap:nowrap;align-items:center;gap:4px;padding:6px;border-radius:18px;background:rgba(255,255,255,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.85);align-self:flex-start;max-width:100%;white-space:nowrap">
-          <a href="#contacto" style="padding:clamp(14px,1.1vw,20px) clamp(18px,1.4vw,26px);font:500 clamp(15px,1vw,18px) 'Poppins',sans-serif;color:#4A4F6E" style-hover="color:#121735">Hablemos</a>
-          <a href="#proyectos" style="padding:clamp(15px,1.1vw,21px) clamp(26px,2vw,36px);border-radius:13px;background:#121735;color:#FBF8F3;font:600 clamp(15px,1vw,18px) 'Poppins',sans-serif;box-shadow:0 12px 24px -12px rgba(18,23,53,.6);transition:transform .25s,background .25s" style-hover="transform:translateY(-2px);background:#262E66;color:#FBF8F3">Conoce mi experiencia</a>
+          <a href="#contacto" style="padding:clamp(14px,1.1vw,20px) clamp(18px,1.4vw,26px);font:500 clamp(15px,1vw,18px) 'Poppins',sans-serif;color:#4A4F6E" style-hover="color:#121735">{{ t.talk }}</a>
+          <a href="#proyectos" style="padding:clamp(15px,1.1vw,21px) clamp(26px,2vw,36px);border-radius:13px;background:#121735;color:#FBF8F3;font:600 clamp(15px,1vw,18px) 'Poppins',sans-serif;box-shadow:0 12px 24px -12px rgba(18,23,53,.6);transition:transform .25s,background .25s" style-hover="transform:translateY(-2px);background:#262E66;color:#FBF8F3">{{ t.heroCta }}</a>
         </div>
       </div>
 
@@ -269,7 +270,7 @@ a:hover{color:#6D3FC9}
         <div style="position:absolute;inset:7%;border-radius:50%;background:conic-gradient(from 200deg,#8F84E8,#8B5CF6,#C9C2F5,#A78BFA,#8F84E8);filter:blur(40px);opacity:.55"></div>
         <div style="position:absolute;inset:11%;border-radius:50%;background:radial-gradient(circle at 50% 40%,#F5EEFF,#E3D4FF)"></div>
         <div style="position:absolute;inset:0;clip-path:circle(39% at 50% 50%)">
-          <img src="assets/img/jenny-hero.png" alt="Jenny Guzman, Scrum Master y Agile Coach" style="position:absolute;left:50%;top:-14%;height:124%;transform:translateX(-50%);display:block;filter:saturate(.7) hue-rotate(-8deg) brightness(1.02)">
+          <img src="assets/img/jenny-hero.png" alt="{{ t.heroAlt }}" style="position:absolute;left:50%;top:-14%;height:124%;transform:translateX(-50%);display:block;filter:saturate(.7) hue-rotate(-8deg) brightness(1.02)">
         </div>
         <div style="position:absolute;inset:0;clip-path:inset(-30% -30% 50% -30%);pointer-events:none">
           <img src="assets/img/jenny-hero.png" alt="" aria-hidden="true" style="position:absolute;left:50%;top:-14%;height:124%;transform:translateX(-50%);display:block;filter:saturate(.7) hue-rotate(-8deg) brightness(1.02)">
@@ -303,16 +304,16 @@ a:hover{color:#6D3FC9}
             </div>
           </div>
           <div data-float="4" style="position:absolute;right:0%;bottom:4%;width:172px;padding:11px;border-radius:16px;background:rgba(255,255,255,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.85);box-shadow:0 24px 50px -20px rgba(18,23,53,.35);display:flex;flex-direction:column;gap:10px">
-            <div style="display:flex;justify-content:space-between;font:600 9.5px 'Poppins',sans-serif;color:#121735"><span>Sprint · 2 semanas</span><span style="color:#6D3FC9">●</span></div>
+            <div style="display:flex;justify-content:space-between;font:600 9.5px 'Poppins',sans-serif;color:#121735"><span>{{ t.sprint2w }}</span><span style="color:#6D3FC9">●</span></div>
             <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font:500 9px 'Poppins',sans-serif;color:#8A8EA8;text-align:center">
-              <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+              <span>{{ t.wd0 }}</span><span>{{ t.wd1 }}</span><span>{{ t.wd2 }}</span><span>{{ t.wd3 }}</span><span>{{ t.wd4 }}</span><span>{{ t.wd5 }}</span><span>{{ t.wd6 }}</span>
             </div>
             <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px">
               <sc-for list="{{ sprint }}" as="d" hint-placeholder-count="14">
                 <span style="height:18px;border-radius:5px;display:grid;place-items:center;font:500 9px 'Poppins',sans-serif;background:{{ d.bg }};color:{{ d.fg }}">{{ d.label }}</span>
               </sc-for>
             </div>
-            <div style="display:flex;gap:10px;font:500 9px 'Poppins',sans-serif;color:#4A4F6E"><span style="display:flex;align-items:center;gap:4px"><span style="width:7px;height:7px;border-radius:2px;background:#8B5CF6"></span>Planning / Review</span><span style="display:flex;align-items:center;gap:4px"><span style="width:7px;height:7px;border-radius:2px;background:#121735"></span>Hoy</span></div>
+            <div style="display:flex;gap:10px;font:500 9px 'Poppins',sans-serif;color:#4A4F6E"><span style="display:flex;align-items:center;gap:4px"><span style="width:7px;height:7px;border-radius:2px;background:#8B5CF6"></span>Planning / Review</span><span style="display:flex;align-items:center;gap:4px"><span style="width:7px;height:7px;border-radius:2px;background:#121735"></span>{{ t.today }}</span></div>
           </div>
         </sc-if>
       </div>
@@ -329,34 +330,34 @@ a:hover{color:#6D3FC9}
       <div style="position:absolute;inset:14% 0 6% 0;border-radius:999px 999px 36px 36px;overflow:hidden;background:linear-gradient(180deg,#D9C6FF 0%,#B79BFA 55%,#EFE4FF 100%);box-shadow:0 40px 80px -45px rgba(76,40,160,.6),inset 0 1px 0 rgba(255,255,255,.7)">
         <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(circle at 50% 28%,rgba(255,255,255,.75),transparent 55%)"></div>
         <svg sc-camel-view-box="0 0 400 500" sc-camel-preserve-aspect-ratio="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;opacity:.45"><circle cx="200" cy="190" r="140" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3 7"></circle></svg>
-        <div style="position:absolute;inset:-17.5% 0 -7.5% 0"><img src="assets/img/jenny-about.png" alt="Jenny Guzman con los brazos cruzados" style="position:absolute;left:50%;bottom:-6%;height:112%;transform:translateX(-50%);display:block;filter:saturate(.7) hue-rotate(-8deg) brightness(1.02);-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 97%);mask-image:linear-gradient(to bottom,#000 80%,transparent 97%)"></div>
+        <div style="position:absolute;inset:-17.5% 0 -7.5% 0"><img src="assets/img/jenny-about.png" alt="{{ t.aboutAlt }}" style="position:absolute;left:50%;bottom:-6%;height:112%;transform:translateX(-50%);display:block;filter:saturate(.7) hue-rotate(-8deg) brightness(1.02);-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 97%);mask-image:linear-gradient(to bottom,#000 80%,transparent 97%)"></div>
       </div>
       <div aria-hidden="true" style="position:absolute;inset:0;clip-path:inset(-20% -20% 72% -20%);pointer-events:none"><img src="assets/img/jenny-about.png" alt="" aria-hidden="true" style="position:absolute;left:50%;bottom:-6%;height:112%;transform:translateX(-50%);display:block;filter:saturate(.7) hue-rotate(-8deg) brightness(1.02);-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 97%);mask-image:linear-gradient(to bottom,#000 80%,transparent 97%)"></div>
-      <span data-float="0" style="position:absolute;left:-10%;top:30%;display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.6);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.9);box-shadow:0 14px 30px -16px rgba(18,23,53,.45);font:500 13px 'Poppins',sans-serif;color:#121735;white-space:nowrap"><span style="width:7px;height:7px;border-radius:50%;background:#8B5CF6"></span>Empatía</span>
-      <span data-float="2" style="position:absolute;right:-12%;top:42%;display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.6);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.9);box-shadow:0 14px 30px -16px rgba(18,23,53,.45);font:500 13px 'Poppins',sans-serif;color:#121735;white-space:nowrap"><span style="width:7px;height:7px;border-radius:50%;background:#121735"></span>Facilitación</span>
-      <span data-float="4" style="position:absolute;left:-6%;top:58%;display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.6);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.9);box-shadow:0 14px 30px -16px rgba(18,23,53,.45);font:500 13px 'Poppins',sans-serif;color:#121735;white-space:nowrap"><span style="width:7px;height:7px;border-radius:50%;background:#7E9BF0"></span>Resolución de problemas</span>
+      <span data-float="0" style="position:absolute;left:-10%;top:30%;display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.6);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.9);box-shadow:0 14px 30px -16px rgba(18,23,53,.45);font:500 13px 'Poppins',sans-serif;color:#121735;white-space:nowrap"><span style="width:7px;height:7px;border-radius:50%;background:#8B5CF6"></span>{{ t.chipEmp }}</span>
+      <span data-float="2" style="position:absolute;right:-12%;top:42%;display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.6);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.9);box-shadow:0 14px 30px -16px rgba(18,23,53,.45);font:500 13px 'Poppins',sans-serif;color:#121735;white-space:nowrap"><span style="width:7px;height:7px;border-radius:50%;background:#121735"></span>{{ t.chipFac }}</span>
+      <span data-float="4" style="position:absolute;left:-6%;top:58%;display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.6);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.9);box-shadow:0 14px 30px -16px rgba(18,23,53,.45);font:500 13px 'Poppins',sans-serif;color:#121735;white-space:nowrap"><span style="width:7px;height:7px;border-radius:50%;background:#7E9BF0"></span>{{ t.chipProb }}</span>
       <div style="position:absolute;left:7%;right:7%;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 12px 12px 18px;border-radius:22px;background:rgba(255,255,255,.6);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.9);box-shadow:0 24px 50px -24px rgba(18,23,53,.5)">
         <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
           <span style="font:600 15px 'Poppins',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#121735">Jenny Guzman</span>
           <span style="font:500 12px 'Poppins',sans-serif;color:#6D3FC9">Scrum Master · Agile Coach</span>
         </span>
-        <a href="https://www.linkedin.com/" aria-label="LinkedIn de Jenny Guzman" style="flex:none;width:44px;height:44px;border-radius:14px;background:#121735;color:#FBF8F3;display:grid;place-items:center;font:700 15px 'Poppins',sans-serif;transition:background .25s,transform .25s" style-hover="background:#6D3FC9;transform:translateY(-2px);color:#fff">in</a>
+        <a href="https://www.linkedin.com/" aria-label="{{ t.liAria }}" style="flex:none;width:44px;height:44px;border-radius:14px;background:#121735;color:#FBF8F3;display:grid;place-items:center;font:700 15px 'Poppins',sans-serif;transition:background .25s,transform .25s" style-hover="background:#6D3FC9;transform:translateY(-2px);color:#fff">in</a>
       </div>
     </div>
     <div data-reveal="" style="display:flex;flex-direction:column;gap:22px">
-      <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6D3FC9">01 — Sobre mí</span>
-      <h2 style="margin:0;font:600 clamp(30px,3.2vw,44px)/1.1 'Poppins',sans-serif;letter-spacing:-.03em;text-wrap:balance">Facilito equipos que aprenden, deciden y entregan juntos.</h2>
-      <p style="margin:0;font-size:16px;line-height:1.75;color:#3B4062;text-wrap:pretty">Soy Scrum Master y Agile Coach. Mi trabajo es crear las condiciones para que los equipos colaboren con claridad, tomen decisiones informadas y mejoren de forma sostenida. [Edita este párrafo con tu trayectoria: sectores, tamaño de equipos y tipo de organizaciones.]</p>
-      <p style="margin:0;font-size:16px;line-height:1.75;color:#3B4062;text-wrap:pretty">Entiendo el liderazgo ágil como un servicio: escuchar antes de proponer, hacer visible lo invisible y retirar los obstáculos que impiden al equipo avanzar. [Añade aquí tu filosofía y visión personal.]</p>
+      <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6D3FC9">{{ t.lbl1 }}</span>
+      <h2 style="margin:0;font:600 clamp(30px,3.2vw,44px)/1.1 'Poppins',sans-serif;letter-spacing:-.03em;text-wrap:balance">{{ t.aboutH2 }}</h2>
+      <p style="margin:0;font-size:16px;line-height:1.75;color:#3B4062;text-wrap:pretty">{{ t.aboutP1 }}</p>
+      <p style="margin:0;font-size:16px;line-height:1.75;color:#3B4062;text-wrap:pretty">{{ t.aboutP2 }}</p>
       <div class="stats" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
-        <div style="padding:18px;border-radius:18px;background:rgba(255,255,255,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.85);display:flex;flex-direction:column;gap:6px"><span style="font:600 28px 'Poppins',sans-serif;color:#121735">[X]+</span><span style="font-size:13px;color:#3B4062">años de experiencia</span></div>
-        <div style="padding:18px;border-radius:18px;background:rgba(255,255,255,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.85);display:flex;flex-direction:column;gap:6px"><span style="font:600 28px 'Poppins',sans-serif;color:#121735">[X]</span><span style="font-size:13px;color:#3B4062">equipos acompañados</span></div>
-        <div style="padding:18px;border-radius:18px;background:rgba(255,255,255,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.85);display:flex;flex-direction:column;gap:6px"><span style="font:600 28px 'Poppins',sans-serif;color:#121735">[X]</span><span style="font-size:13px;color:#3B4062">sectores</span></div>
+        <div style="padding:18px;border-radius:18px;background:rgba(255,255,255,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.85);display:flex;flex-direction:column;gap:6px"><span style="font:600 28px 'Poppins',sans-serif;color:#121735">[X]+</span><span style="font-size:13px;color:#3B4062">{{ t.stat1 }}</span></div>
+        <div style="padding:18px;border-radius:18px;background:rgba(255,255,255,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.85);display:flex;flex-direction:column;gap:6px"><span style="font:600 28px 'Poppins',sans-serif;color:#121735">[X]</span><span style="font-size:13px;color:#3B4062">{{ t.stat2 }}</span></div>
+        <div style="padding:18px;border-radius:18px;background:rgba(255,255,255,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.85);display:flex;flex-direction:column;gap:6px"><span style="font:600 28px 'Poppins',sans-serif;color:#121735">[X]</span><span style="font-size:13px;color:#3B4062">{{ t.stat3 }}</span></div>
       </div>
       <blockquote style="margin:8px 0 0;padding:32px;border-radius:28px;background:rgba(18,23,53,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.12);color:#FBF8F3;position:relative;overflow:hidden">
         <span style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,#8F84E8,transparent 70%);opacity:.6"></span>
         <span style="display:block;font:400 64px/0.5 'Poppins',sans-serif;color:#C4A8FF;margin-bottom:12px">“</span>
-        <p style="position:relative;margin:0;font:500 clamp(20px,1.9vw,26px)/1.35 'Poppins',sans-serif;text-wrap:balance">Agilidad no es hacer las cosas más rápido, es aprender a hacerlas mejor juntos.</p>
+        <p style="position:relative;margin:0;font:500 clamp(20px,1.9vw,26px)/1.35 'Poppins',sans-serif;text-wrap:balance">{{ t.quote }}</p>
       </blockquote>
     </div>
   </div>
@@ -368,10 +369,10 @@ a:hover{color:#6D3FC9}
   <div data-scene="" style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:56px">
     <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
       <div style="display:flex;flex-direction:column;gap:16px;max-width:620px">
-        <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6D3FC9">02 — My Expertise</span>
-        <h2 style="margin:0;font:600 clamp(32px,3.6vw,48px)/1.08 'Poppins',sans-serif;letter-spacing:-.03em">Competencias que sostienen equipos de alto rendimiento.</h2>
+        <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6D3FC9">{{ t.lbl2 }}</span>
+        <h2 style="margin:0;font:600 clamp(32px,3.6vw,48px)/1.08 'Poppins',sans-serif;letter-spacing:-.03em">{{ t.expH2 }}</h2>
       </div>
-      <p style="margin:0;max-width:360px;color:#3B4062;line-height:1.6">Del marco Scrum a la cultura de mejora continua: prácticas concretas, aplicadas al contexto de cada equipo.</p>
+      <p style="margin:0;max-width:360px;color:#3B4062;line-height:1.6">{{ t.expP }}</p>
     </div>
     <div class="exp-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:16px">
       <sc-for list="{{ expertise }}" as="e" hint-placeholder-count="10">
@@ -391,8 +392,8 @@ a:hover{color:#6D3FC9}
 </section>
 
 <div class="mq-band" aria-hidden="true">
-  <div class="mq-row mq-dark" data-mq="-1"><div class="mq-track"><span>Scrum</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Kanban</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Lean</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Liderazgo colaborativo</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Mejora continua</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Design Thinking</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Facilitación</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Agile Coaching</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Scrum</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Kanban</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Lean</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Liderazgo colaborativo</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Mejora continua</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Design Thinking</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Facilitación</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Agile Coaching</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Scrum</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Kanban</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Lean</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Liderazgo colaborativo</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Mejora continua</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Design Thinking</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Facilitación</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Agile Coaching</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg></div></div>
-  <div class="mq-row mq-light" data-mq="1"><div class="mq-track"><span>Scrum</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Kanban</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Lean</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Liderazgo colaborativo</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Mejora continua</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Design Thinking</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Facilitación</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Agile Coaching</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Scrum</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Kanban</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Lean</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Liderazgo colaborativo</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Mejora continua</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Design Thinking</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Facilitación</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Agile Coaching</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Scrum</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Kanban</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Lean</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Liderazgo colaborativo</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Mejora continua</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Design Thinking</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Facilitación</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Agile Coaching</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg></div></div>
+  <div class="mq-row mq-dark" data-mq="-1"><div class="mq-track"><span>Scrum</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Kanban</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Lean</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqLead }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqImp }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Design Thinking</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqFac }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Agile Coaching</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Scrum</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Kanban</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Lean</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqLead }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqImp }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Design Thinking</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqFac }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Agile Coaching</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Scrum</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Kanban</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Lean</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqLead }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqImp }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Design Thinking</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqFac }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Agile Coaching</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg></div></div>
+  <div class="mq-row mq-light" data-mq="1"><div class="mq-track"><span>Scrum</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Kanban</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Lean</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqLead }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqImp }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Design Thinking</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqFac }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Agile Coaching</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Scrum</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Kanban</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Lean</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqLead }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqImp }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Design Thinking</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqFac }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Agile Coaching</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Scrum</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Kanban</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Lean</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqLead }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqImp }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Design Thinking</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>{{ t.mqFac }}</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg><span>Agile Coaching</span><svg sc-camel-view-box="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"></path></svg></div></div>
 </div>
 
 <!-- APPROACH -->
@@ -409,8 +410,8 @@ a:hover{color:#6D3FC9}
   </div>
   <div data-scene="" style="position:relative;max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:64px">
     <div data-reveal="" style="display:flex;flex-direction:column;gap:16px;max-width:680px">
-      <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#C4A8FF">03 — My Approach</span>
-      <h2 style="margin:0;font:600 clamp(32px,3.6vw,48px)/1.08 'Poppins',sans-serif;letter-spacing:-.03em">Un ciclo de acompañamiento, no una receta.</h2>
+      <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#C4A8FF">{{ t.lbl3 }}</span>
+      <h2 style="margin:0;font:600 clamp(32px,3.6vw,48px)/1.08 'Poppins',sans-serif;letter-spacing:-.03em">{{ t.appH2 }}</h2>
     </div>
 
     <div class="steps-grid" style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
@@ -428,7 +429,7 @@ a:hover{color:#6D3FC9}
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px;padding:clamp(28px,4vw,48px);border-radius:28px;background:rgba(251,248,243,.06);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(251,248,243,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)">
       <div style="display:flex;flex-direction:column;gap:12px">
-        <span style="font-size:13px;color:#C4A8FF;font-weight:600">Fase {{ current.n }}</span>
+        <span style="font-size:13px;color:#C4A8FF;font-weight:600">{{ t.phase }} {{ current.n }}</span>
         <h3 style="margin:0;font:600 clamp(32px,3.4vw,44px)/1.05 'Poppins',sans-serif;letter-spacing:-.02em">{{ current.title }}</h3>
         <p style="margin:0;font-size:17px;line-height:1.6;color:#C8CBE0">{{ current.short }}</p>
       </div>
@@ -446,9 +447,9 @@ a:hover{color:#6D3FC9}
   <span class="sec-num sec-num-left" data-depth-scroll="0.35" aria-hidden="true">04</span>
   <div data-scene="" style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:56px">
     <div data-reveal="" style="display:flex;flex-direction:column;gap:16px;max-width:680px">
-      <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6D3FC9">04 — Experience &amp; Projects</span>
-      <h2 style="margin:0;font:600 clamp(32px,3.6vw,48px)/1.08 'Poppins',sans-serif;letter-spacing:-.03em">Proyectos y procesos de transformación.</h2>
-      <p style="margin:0;color:#4A4F6E;line-height:1.6">Contenido de ejemplo: reemplaza cada campo con información real del proyecto.</p>
+      <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6D3FC9">{{ t.lbl4 }}</span>
+      <h2 style="margin:0;font:600 clamp(32px,3.6vw,48px)/1.08 'Poppins',sans-serif;letter-spacing:-.03em">{{ t.projH2 }}</h2>
+      <p style="margin:0;color:#4A4F6E;line-height:1.6">{{ t.projP }}</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:20px">
       <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
@@ -456,7 +457,7 @@ a:hover{color:#6D3FC9}
           <div style="display:flex;flex-direction:column;gap:18px">
             <div style="display:flex;align-items:center;gap:12px">
               <span style="font:600 13px 'Poppins',sans-serif;padding:6px 12px;border-radius:999px;background:{{ p.tint }}">{{ p.n }}</span>
-              <span style="font-size:13px;color:#4A4F6E">[Sector · Año]</span>
+              <span style="font-size:13px;color:#4A4F6E">{{ t.sectorYear }}</span>
             </div>
             <h3 style="margin:0;font:600 clamp(24px,2.4vw,32px)/1.1 'Poppins',sans-serif;letter-spacing:-.02em">{{ p.name }}</h3>
             <div style="display:flex;flex-wrap:wrap;gap:8px">
@@ -466,9 +467,9 @@ a:hover{color:#6D3FC9}
             </div>
           </div>
           <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:22px 28px">
-            <div style="display:flex;flex-direction:column;gap:6px"><dt style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#5B4FC9">Contexto y desafío</dt><dd style="margin:0;font-size:15px;line-height:1.55;color:#3B4062">{{ p.context }}</dd></div>
-            <div style="display:flex;flex-direction:column;gap:6px"><dt style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#5B4FC9">Rol desempeñado</dt><dd style="margin:0;font-size:15px;line-height:1.55;color:#3B4062">{{ p.role }}</dd></div>
-            <div style="display:flex;flex-direction:column;gap:6px;grid-column:1/-1;padding:18px 20px;border-radius:16px;background:#F5EEFF"><dt style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#6D3FC9">Resultados e impacto</dt><dd style="margin:0;font-size:15px;line-height:1.55;color:#3B4062">{{ p.result }}</dd></div>
+            <div style="display:flex;flex-direction:column;gap:6px"><dt style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#5B4FC9">{{ t.dtCtx }}</dt><dd style="margin:0;font-size:15px;line-height:1.55;color:#3B4062">{{ p.context }}</dd></div>
+            <div style="display:flex;flex-direction:column;gap:6px"><dt style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#5B4FC9">{{ t.dtRole }}</dt><dd style="margin:0;font-size:15px;line-height:1.55;color:#3B4062">{{ p.role }}</dd></div>
+            <div style="display:flex;flex-direction:column;gap:6px;grid-column:1/-1;padding:18px 20px;border-radius:16px;background:#F5EEFF"><dt style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#6D3FC9">{{ t.dtRes }}</dt><dd style="margin:0;font-size:15px;line-height:1.55;color:#3B4062">{{ p.result }}</dd></div>
           </dl>
         </article>
       </sc-for>
@@ -481,12 +482,12 @@ a:hover{color:#6D3FC9}
   <span class="sec-num sec-num-right" data-depth-scroll="0.35" aria-hidden="true">05</span>
   <div data-scene="" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:56px;align-items:center">
     <div data-reveal="" style="display:flex;flex-direction:column;gap:16px">
-      <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6D3FC9">05 — Tools &amp; Methodologies</span>
-      <h2 style="margin:0;font:600 clamp(32px,3.6vw,48px)/1.08 'Poppins',sans-serif;letter-spacing:-.03em">Herramientas al servicio de las personas.</h2>
-      <p style="margin:0;color:#4A4F6E;line-height:1.6;max-width:420px">Elijo la herramienta según el equipo, nunca al revés. Estas son las que uso con más frecuencia.</p>
+      <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6D3FC9">{{ t.lbl5 }}</span>
+      <h2 style="margin:0;font:600 clamp(32px,3.6vw,48px)/1.08 'Poppins',sans-serif;letter-spacing:-.03em">{{ t.toolsH2 }}</h2>
+      <p style="margin:0;color:#4A4F6E;line-height:1.6;max-width:420px">{{ t.toolsP }}</p>
       <div style="display:flex;gap:20px;margin-top:8px;font-size:13px;font-weight:500">
-        <span style="display:flex;align-items:center;gap:8px"><span style="width:10px;height:10px;border-radius:3px;background:#121735"></span>Herramientas</span>
-        <span style="display:flex;align-items:center;gap:8px"><span style="width:10px;height:10px;border-radius:3px;background:#8B5CF6"></span>Metodologías</span>
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:10px;height:10px;border-radius:3px;background:#121735"></span>{{ t.legTools }}</span>
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:10px;height:10px;border-radius:3px;background:#8B5CF6"></span>{{ t.legMeth }}</span>
       </div>
     </div>
     <div class="tools-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
@@ -505,8 +506,8 @@ a:hover{color:#6D3FC9}
   <span class="sec-num sec-num-left" data-depth-scroll="0.35" aria-hidden="true">06</span>
   <div data-scene="" style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
     <div data-reveal="" style="display:flex;flex-direction:column;gap:16px;max-width:680px">
-      <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6D3FC9">06 — Certifications</span>
-      <h2 style="margin:0;font:600 clamp(32px,3.6vw,48px)/1.08 'Poppins',sans-serif;letter-spacing:-.03em">Formación y credenciales.</h2>
+      <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6D3FC9">{{ t.lbl6 }}</span>
+      <h2 style="margin:0;font:600 clamp(32px,3.6vw,48px)/1.08 'Poppins',sans-serif;letter-spacing:-.03em">{{ t.certH2 }}</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px">
       <sc-for list="{{ certs }}" as="c" hint-placeholder-count="4">
@@ -528,10 +529,10 @@ a:hover{color:#6D3FC9}
   <div data-scene="" style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
     <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
       <div style="display:flex;flex-direction:column;gap:16px;max-width:620px">
-        <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6D3FC9">07 — Testimonials</span>
-        <h2 style="margin:0;font:600 clamp(32px,3.6vw,48px)/1.08 'Poppins',sans-serif;letter-spacing:-.03em">Lo que dicen los equipos.</h2>
+        <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6D3FC9">{{ t.lbl7 }}</span>
+        <h2 style="margin:0;font:600 clamp(32px,3.6vw,48px)/1.08 'Poppins',sans-serif;letter-spacing:-.03em">{{ t.testH2 }}</h2>
       </div>
-      <span style="font-size:13px;color:#4A4F6E">Testimonios de ejemplo — reemplazar por reales</span>
+      <span style="font-size:13px;color:#4A4F6E">{{ t.testNote }}</span>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
       <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
@@ -551,10 +552,10 @@ a:hover{color:#6D3FC9}
 <section id="contacto" style="position:relative;z-index:1;padding:clamp(20px,3vw,40px)">
   <div data-scene="" class="contact-card" style="max-width:1360px;margin:0 auto;border-radius:36px;background:radial-gradient(800px 500px at 0% 100%,rgba(143,132,232,.45),transparent 60%),radial-gradient(600px 400px at 100% 0%,rgba(139,92,246,.28),transparent 60%),#121735;color:#FBF8F3;padding:clamp(40px,7vw,96px) clamp(24px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,6vw,80px)">
     <div data-reveal="" style="display:flex;flex-direction:column;gap:28px">
-      <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#C4A8FF">08 — Contact</span>
-      <h2 style="margin:0;font:600 clamp(40px,5vw,68px)/1.0 'Poppins',sans-serif;letter-spacing:-.035em;text-wrap:balance">Let’s create better ways of <span style="font-weight:600;color:#C9C2F5">working together.</span></h2>
+      <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#C4A8FF">{{ t.lbl8 }}</span>
+      <h2 style="margin:0;font:600 clamp(40px,5vw,68px)/1.0 'Poppins',sans-serif;letter-spacing:-.035em;text-wrap:balance">{{ t.cH2a }} <span style="font-weight:600;color:#C9C2F5">{{ t.cH2b }}</span></h2>
       <div style="display:flex;flex-direction:column;gap:4px;margin-top:12px">
-        <a href="mailto:hola@tudominio.com" style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid rgba(251,248,243,.15);color:#FBF8F3;font-size:18px;transition:padding .3s" style-hover="padding-left:8px;color:#C4A8FF"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#C8CBE0">Correo</span>hola@tudominio.com</span><span>↗</span></a>
+        <a href="mailto:hola@tudominio.com" style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid rgba(251,248,243,.15);color:#FBF8F3;font-size:18px;transition:padding .3s" style-hover="padding-left:8px;color:#C4A8FF"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#C8CBE0">{{ t.email }}</span>hola@tudominio.com</span><span>↗</span></a>
         <a href="https://www.linkedin.com/" style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid rgba(251,248,243,.15);color:#FBF8F3;font-size:18px;transition:padding .3s" style-hover="padding-left:8px;color:#C4A8FF"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#C8CBE0">LinkedIn</span>linkedin.com/in/tu-perfil</span><span>↗</span></a>
       </div>
     </div>
@@ -562,31 +563,31 @@ a:hover{color:#6D3FC9}
       <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
         <div style="min-height:380px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:16px">
           <span style="width:56px;height:56px;border-radius:50%;background:#EEEBFC;display:grid;place-items:center;font-size:24px;color:#5B4FC9">✓</span>
-          <h3 style="margin:0;font:600 28px 'Poppins',sans-serif">Gracias, {{ firstName }}.</h3>
-          <p style="margin:0;color:#4A4F6E;line-height:1.6">Te responderé en un plazo de 48 horas.</p>
-          <button sc-camel-on-click="{{ reset }}" style="margin-top:8px;padding:12px 20px;border-radius:999px;border:1.5px solid #121735;background:none;font:600 14px 'Poppins',sans-serif;cursor:pointer;color:#121735">Enviar otro mensaje</button>
+          <h3 style="margin:0;font:600 28px 'Poppins',sans-serif">{{ t.thanks }}, {{ firstName }}.</h3>
+          <p style="margin:0;color:#4A4F6E;line-height:1.6">{{ t.reply48 }}</p>
+          <button sc-camel-on-click="{{ reset }}" style="margin-top:8px;padding:12px 20px;border-radius:999px;border:1.5px solid #121735;background:none;font:600 14px 'Poppins',sans-serif;cursor:pointer;color:#121735">{{ t.sendAnother }}</button>
         </div>
       </sc-if>
       <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
         <form sc-camel-on-submit="{{ submit }}" style="display:flex;flex-direction:column;gap:18px">
-          <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:600">Nombre
-            <input required="" name="name" value="{{ name }}" sc-camel-on-change="{{ onName }}" placeholder="Tu nombre" style="padding:14px 16px;border-radius:14px;border:1.5px solid rgba(18,23,53,.12);background:rgba(255,255,255,.92);font:400 16px 'Poppins',sans-serif;color:#121735;outline:none;transition:border-color .2s,box-shadow .2s" style-focus="border-color:#5B4FC9;box-shadow:0 0 0 4px rgba(91,79,201,.15)">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:600">{{ t.name }}
+            <input required="" name="name" value="{{ name }}" sc-camel-on-change="{{ onName }}" placeholder="{{ t.phName }}" style="padding:14px 16px;border-radius:14px;border:1.5px solid rgba(18,23,53,.12);background:rgba(255,255,255,.92);font:400 16px 'Poppins',sans-serif;color:#121735;outline:none;transition:border-color .2s,box-shadow .2s" style-focus="border-color:#5B4FC9;box-shadow:0 0 0 4px rgba(91,79,201,.15)">
           </label>
-          <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:600">Correo
-            <input required="" type="email" name="email" placeholder="nombre@empresa.com" style="padding:14px 16px;border-radius:14px;border:1.5px solid rgba(18,23,53,.12);background:rgba(255,255,255,.92);font:400 16px 'Poppins',sans-serif;color:#121735;outline:none;transition:border-color .2s,box-shadow .2s" style-focus="border-color:#5B4FC9;box-shadow:0 0 0 4px rgba(91,79,201,.15)">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:600">{{ t.email }}
+            <input required="" type="email" name="email" placeholder="{{ t.phEmail }}" style="padding:14px 16px;border-radius:14px;border:1.5px solid rgba(18,23,53,.12);background:rgba(255,255,255,.92);font:400 16px 'Poppins',sans-serif;color:#121735;outline:none;transition:border-color .2s,box-shadow .2s" style-focus="border-color:#5B4FC9;box-shadow:0 0 0 4px rgba(91,79,201,.15)">
           </label>
           <fieldset style="margin:0;padding:0;border:0;display:flex;flex-direction:column;gap:10px">
-            <legend style="font-size:13px;font-weight:600;margin-bottom:10px">¿En qué puedo ayudarte?</legend>
+            <legend style="font-size:13px;font-weight:600;margin-bottom:10px">{{ t.helpQ }}</legend>
             <div style="display:flex;flex-wrap:wrap;gap:8px">
               <sc-for list="{{ topics }}" as="tp" hint-placeholder-count="4">
                 <button type="button" sc-camel-on-click="{{ tp.toggle }}" aria-pressed="{{ tp.on }}" style="padding:9px 14px;border-radius:999px;border:1.5px solid {{ tp.border }};background:{{ tp.bg }};color:{{ tp.fg }};font:500 14px 'Poppins',sans-serif;cursor:pointer;transition:all .2s">{{ tp.label }}</button>
               </sc-for>
             </div>
           </fieldset>
-          <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:600">Mensaje
-            <textarea name="message" rows="4" placeholder="Cuéntame sobre tu equipo y el reto que enfrentáis" style="padding:14px 16px;border-radius:14px;border:1.5px solid rgba(18,23,53,.12);background:rgba(255,255,255,.92);font:400 16px/1.5 'Poppins',sans-serif;color:#121735;outline:none;resize:vertical;transition:border-color .2s,box-shadow .2s" style-focus="border-color:#5B4FC9;box-shadow:0 0 0 4px rgba(91,79,201,.15)"></textarea>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:600">{{ t.msg }}
+            <textarea name="message" rows="4" placeholder="{{ t.phMsg }}" style="padding:14px 16px;border-radius:14px;border:1.5px solid rgba(18,23,53,.12);background:rgba(255,255,255,.92);font:400 16px/1.5 'Poppins',sans-serif;color:#121735;outline:none;resize:vertical;transition:border-color .2s,box-shadow .2s" style-focus="border-color:#5B4FC9;box-shadow:0 0 0 4px rgba(91,79,201,.15)"></textarea>
           </label>
-          <button type="submit" style="margin-top:6px;padding:17px 24px;border-radius:999px;border:0;background:#8B5CF6;color:#fff;font:600 16px 'Poppins',sans-serif;cursor:pointer;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(139,92,246,.9)">Enviar mensaje →</button>
+          <button type="submit" style="margin-top:6px;padding:17px 24px;border-radius:999px;border:0;background:#8B5CF6;color:#fff;font:600 16px 'Poppins',sans-serif;cursor:pointer;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(139,92,246,.9)">{{ t.send }}</button>
         </form>
       </sc-if>
     </div>
@@ -595,8 +596,8 @@ a:hover{color:#6D3FC9}
     <span aria-hidden="true" style="position:absolute;left:-120px;top:-160px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.55),transparent 70%)"></span>
     <span aria-hidden="true" style="position:absolute;right:-100px;bottom:-200px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(126,155,240,.35),transparent 70%)"></span>
     <div style="position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;padding-bottom:clamp(32px,4vw,48px);border-bottom:1px solid rgba(255,255,255,.12)">
-      <p style="margin:0;font:600 clamp(26px,3vw,40px)/1.15 'Poppins',sans-serif;letter-spacing:-.02em;max-width:620px;text-wrap:balance">¿Tu equipo está listo para trabajar <span style="color:#C4A8FF">mejor juntos</span>?</p>
-      <a href="#contacto" style="display:inline-flex;align-items:center;gap:12px;padding:16px 26px;border-radius:999px;background:#FBF8F3;color:#121735;font:600 15px 'Poppins',sans-serif;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(196,168,255,.9);color:#121735">Agenda una conversación <span aria-hidden="true">→</span></a>
+      <p style="margin:0;font:600 clamp(26px,3vw,40px)/1.15 'Poppins',sans-serif;letter-spacing:-.02em;max-width:620px;text-wrap:balance">{{ t.fA }} <span style="color:#C4A8FF">{{ t.fB }}</span>?</p>
+      <a href="#contacto" style="display:inline-flex;align-items:center;gap:12px;padding:16px 26px;border-radius:999px;background:#FBF8F3;color:#121735;font:600 15px 'Poppins',sans-serif;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(196,168,255,.9);color:#121735">{{ t.book }} <span aria-hidden="true">→</span></a>
     </div>
     <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:36px;padding:clamp(32px,4vw,48px) 0">
       <div class="foot-brand" style="display:flex;flex-direction:column;gap:16px;grid-column:span 2;min-width:0">
@@ -604,21 +605,21 @@ a:hover{color:#6D3FC9}
           <span style="width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#A78BFA,#6D3FC9 55%,#121735);display:grid;place-items:center;font:600 15px 'Poppins',sans-serif;letter-spacing:.5px;border:1px solid rgba(255,255,255,.2)">JG</span>
           <span style="display:flex;flex-direction:column;line-height:1.15"><span style="font:600 16px 'Poppins',sans-serif;letter-spacing:.08em">JENNY GUZMAN</span><span style="font:500 10.5px 'Poppins',sans-serif;letter-spacing:.18em;color:#C4A8FF">AGILE COACH</span></span>
         </div>
-        <p style="margin:0;max-width:340px;font-size:15px;line-height:1.65;color:#C8CBE0">Liderazgo colaborativo, cultura ágil y mejora continua para equipos y organizaciones.</p>
+        <p style="margin:0;max-width:340px;font-size:15px;line-height:1.65;color:#C8CBE0">{{ t.footP }}</p>
       </div>
-      <nav style="display:flex;flex-direction:column;gap:12px" aria-label="Pie de página">
-        <span style="font:600 12px 'Poppins',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#9AA0C4">Navegación</span>
-        <a href="#sobre-mi" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">Sobre mí</a><a href="#expertise" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">Expertise</a><a href="#enfoque" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">Enfoque</a><a href="#proyectos" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">Proyectos</a>
+      <nav style="display:flex;flex-direction:column;gap:12px" aria-label="{{ t.footAria }}">
+        <span style="font:600 12px 'Poppins',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#9AA0C4">{{ t.footNav }}</span>
+        <a href="#sobre-mi" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">{{ t.navAbout }}</a><a href="#expertise" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">Expertise</a><a href="#enfoque" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">{{ t.navApproach }}</a><a href="#proyectos" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">{{ t.navProjects }}</a>
       </nav>
       <div style="display:flex;flex-direction:column;gap:12px">
-        <span style="font:600 12px 'Poppins',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#9AA0C4">Contacto</span>
-        <a href="mailto:hola@tudominio.com" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">hola@tudominio.com</a><a href="https://www.linkedin.com/" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">LinkedIn</a><a href="#contacto" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">Formulario</a>
+        <span style="font:600 12px 'Poppins',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#9AA0C4">{{ t.footContact }}</span>
+        <a href="mailto:hola@tudominio.com" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">hola@tudominio.com</a><a href="https://www.linkedin.com/" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">LinkedIn</a><a href="#contacto" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">{{ t.footForm }}</a>
       </div>
     </div>
     <div class="foot-word" aria-hidden="true" style="position:relative;font:700 clamp(48px,11vw,170px)/.9 'Poppins',sans-serif;letter-spacing:-.04em;text-align:center;background:linear-gradient(180deg,rgba(196,168,255,.45),rgba(196,168,255,0) 85%);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none;white-space:nowrap;overflow:hidden">JENNY GUZMAN</div>
     <div style="position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;color:#9AA0C4">
       <span>© 2026 Jenny Guzman · Scrum Master &amp; Agile Coach</span>
-      <a href="#top" aria-label="Volver arriba" style="width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#FBF8F3;transition:background .25s,transform .25s" style-hover="background:#8B5CF6;transform:translateY(-3px);color:#fff">↑</a>
+      <a href="#top" aria-label="{{ t.topAria }}" style="width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#FBF8F3;transition:background .25s,transform .25s" style-hover="background:#8B5CF6;transform:translateY(-3px);color:#fff">↑</a>
     </div>
   </footer>
 </section>
@@ -627,11 +628,14 @@ a:hover{color:#6D3FC9}
 </x-dc>
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;showChips&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;autoplayTimeline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Approach&quot;},&quot;scrollAnimations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
 class Component extends DCLogic {
-  state = { heroZoom: 1, step: 0, touched: false, topics: {}, sent: false, name: '' };
+  state = { heroZoom: 1, step: 0, touched: false, topics: {}, sent: false, name: '', lang: initialLang() };
 
   componentDidMount() {
     this.onResize = () => { const w = window.innerWidth; const z = w < 1100 ? 1 : Math.min(1.3, Math.max(1, w / 1400)); if (Math.abs(z - this.state.heroZoom) > .01) this.setState({ heroZoom: +z.toFixed(3) }); };
     window.addEventListener('resize', this.onResize); this.onResize();
+    // motion.js (menú móvil) cambia el idioma a través de esta función
+    window.__setLang = (l) => this.setLang(l);
+    applyLang(this.state.lang, false);
     const reveal = this.props.scrollAnimations ?? true;
     const els = document.querySelectorAll('[data-reveal]');
     if (reveal && 'IntersectionObserver' in window) {
@@ -651,6 +655,12 @@ class Component extends DCLogic {
       if ((this.props.autoplayTimeline ?? true) && !this.state.touched) this.setState(s => ({ step: (s.step + 1) % 4 }));
     }, 4200);
   }
+  setLang(lang) {
+    if (lang !== 'es' && lang !== 'en') return;
+    if (lang === this.state.lang) return;
+    this.setState({ lang });
+    applyLang(lang, true);
+  }
   applyFloat() {
     document.querySelectorAll('[data-drift]:not([data-on])').forEach(el => { const i = +el.dataset.drift; el.style.animation = `drift ${18 + i * 4}s ease-in-out ${-i * 3}s infinite`; el.dataset.on = '1'; });
     document.querySelectorAll('[data-spin]:not([data-on])').forEach(el => { el.style.animation = 'spin 22s linear infinite'; el.dataset.on = '1'; });
@@ -665,46 +675,15 @@ class Component extends DCLogic {
   componentWillUnmount() { window.removeEventListener('resize', this.onResize); clearInterval(this.timer); clearInterval(this.floatTimer); this.io && this.io.disconnect(); }
 
   renderVals() {
-    const waves = [];
-    for (let i = 0; i < 26; i++) {
-      let d = '';
-      for (let x = 0; x <= 640; x += 16) {
-        const y = 150 + i * 6 + Math.sin(x / 95 + i * 0.16) * (40 + i * 2.2) + Math.cos(x / 170 - i * 0.08) * 30;
-        d += (x ? 'L' : 'M') + x + ' ' + y.toFixed(1);
-      }
-      waves.push({ d, stroke: i % 3 === 0 ? '#8B5CF6' : '#8F84E8' });
-    }
-
-    const chips = [
-      { label: 'Scrum', x: '-4%', y: '24%', dot: '#8B5CF6' },
-      { label: 'Agile', x: '74%', y: '8%', dot: '#8F84E8' },
-      { label: 'Leadership', x: '70%', y: '52%', dot: '#121735' },
-      { label: 'Collaboration', x: '-8%', y: '58%', dot: '#8F84E8' },
-      { label: 'Continuous Improvement', x: '30%', y: '88%', dot: '#8B5CF6' },
-    ];
+    const L = this.state.lang;
+    const t = UI[L];
+    const D = DATA[L];
 
     const tints = ['#EEEBFC', '#EFE4FF', '#E4E7F5'];
-    const expertise = [
-      ['Scrum Framework', 'Roles, eventos y artefactos aplicados con sentido, no como checklist.', 'M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4'],
-      ['Agile Coaching', 'Acompañamiento a equipos y líderes para desarrollar autonomía.', 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0'],
-      ['Sprint Planning', 'Objetivos de sprint claros y compromisos realistas.', 'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4M8 14h3'],
-      ['Sprint Retrospectives', 'Espacios seguros para reflexionar y acordar mejoras accionables.', 'M3 12a9 9 0 1 0 3-6.7M3 4v5h5M12 8v4l3 2'],
-      ['Daily Scrum Facilitation', 'Dailies breves y enfocadas en el objetivo del sprint.', 'M12 3v2M12 19v2M3 12h2M19 12h2M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z'],
-      ['Stakeholder Management', 'Alineación de expectativas y comunicación transparente.', 'M10 5a2 2 0 1 0 4 0 2 2 0 1 0-4 0M3 19a2 2 0 1 0 4 0 2 2 0 1 0-4 0M17 19a2 2 0 1 0 4 0 2 2 0 1 0-4 0M12 7v5M12 12l-6 5M12 12l6 5'],
-      ['Team Leadership', 'Liderazgo de servicio que impulsa la responsabilidad compartida.', 'M5 21V4M5 4h11l-2 4 2 4H5'],
-      ['Conflict Resolution', 'Mediación y conversaciones difíciles con empatía y foco.', 'M4 5h10v7H8l-4 3zM10 15h6l4 3V9h-3'],
-      ['Continuous Improvement', 'Métricas útiles y experimentos pequeños para aprender rápido.', 'M3 17l6-6 4 4 8-8M15 7h6v6'],
-      ['Kanban & Lean', 'Flujo visible, límites de WIP y eliminación de desperdicio.', 'M4 4h4v16H4zM10 4h4v10h-4zM16 4h4v6h-4z'],
-    ].map(([title, desc, icon], i) => ({ title, desc, icon, n: String(i + 1).padStart(2, '0'), bg: tints[i % 3] }));
+    const expertise = D.expertise.map(([title, desc], i) => ({ title, desc, icon: ICONS[i], n: String(i + 1).padStart(2, '0'), bg: tints[i % 3] }));
 
-    const stepData = [
-      ['Discover', 'Comprender el equipo y sus necesidades.', ['Observación de ceremonias y dinámicas actuales', 'Entrevistas con equipo, Product Owner y stakeholders', 'Diagnóstico de madurez ágil y puntos de dolor']],
-      ['Align', 'Definir objetivos y prioridades.', ['Visión y objetivos compartidos', 'Acuerdos de trabajo y Definition of Done', 'Backlog priorizado por valor']],
-      ['Facilitate', 'Acompañar ceremonias y eliminar impedimentos.', ['Facilitación de planning, daily, review y retro', 'Gestión activa de impedimentos', 'Coaching individual a roles clave']],
-      ['Improve', 'Medir resultados y promover aprendizaje continuo.', ['Métricas de flujo: lead time, throughput, predictibilidad', 'Experimentos de mejora en cada retrospectiva', 'Transferencia de prácticas para la autonomía del equipo']],
-    ];
     const step = this.state.step;
-    const steps = stepData.map(([title, short], i) => {
+    const steps = D.steps.map(([title, short], i) => {
       const active = i === step, done = i < step;
       return {
         n: String(i + 1).padStart(2, '0'), title, short, active,
@@ -715,60 +694,359 @@ class Component extends DCLogic {
         select: () => this.setState({ step: i, touched: true }),
       };
     });
-    const cur = stepData[step];
+    const cur = D.steps[step];
 
     const projects = [
-      { name: '[Nombre del proyecto 01]', methods: ['Scrum', 'Jira', 'OKRs'], tint: '#EEEBFC' },
-      { name: '[Nombre del proyecto 02]', methods: ['Kanban', 'Lean', 'Miro'], tint: '#EFE4FF' },
-      { name: '[Nombre del proyecto 03]', methods: ['Scrum', 'Design Thinking', 'Azure DevOps'], tint: '#E4E7F5' },
-    ].map((p, i) => ({ ...p, n: String(i + 1).padStart(2, '0'),
-      context: '[Describe la organización, la situación de partida y el principal desafío del equipo.]',
-      role: '[Scrum Master / Agile Coach — alcance, número de equipos y responsabilidades.]',
-      result: '[Resultado medible y verificable: p. ej. evolución del lead time, predictibilidad o satisfacción del equipo.]' }));
+      { methods: ['Scrum', 'Jira', 'OKRs'], tint: '#EEEBFC' },
+      { methods: ['Kanban', 'Lean', 'Miro'], tint: '#EFE4FF' },
+      { methods: ['Scrum', 'Design Thinking', 'Azure DevOps'], tint: '#E4E7F5' },
+    ].map((p, i) => ({ ...p, n: String(i + 1).padStart(2, '0'), name: D.projectName(i + 1), ...D.project }));
 
     const toolList = [['Jira', 0], ['Scrum', 1], ['Miro', 0], ['Kanban', 1], ['Confluence', 0], ['Lean', 1], ['Azure DevOps', 0], ['Design Thinking', 1], ['Trello', 0]];
     const tools = toolList.map(([name, m], i) => ({
-      name, kind: m ? 'Método' : 'Herramienta',
+      name, kind: m ? D.kindMethod : D.kindTool,
       bg: m ? (i % 4 === 1 ? '#8B5CF6' : '#EBDDFF') : (i % 4 === 0 ? '#121735' : 'rgba(255,255,255,.55)'),
       fg: m ? '#121735' : (i % 4 === 0 ? '#FBF8F3' : '#121735'),
     }));
 
-    const certs = [
-      { tag: 'CERT', title: '[Nombre de la certificación]', meta: '[Entidad emisora · Año]' },
-      { tag: 'CERT', title: '[Nombre de la certificación]', meta: '[Entidad emisora · Año]' },
-      { tag: 'EDU', title: '[Título académico]', meta: '[Universidad · Año]' },
-      { tag: 'CURSO', title: '[Formación complementaria]', meta: '[Institución · Año]' },
-    ];
+    const certs = D.certs.map(([tag, title, meta]) => ({ tag, title, meta }));
 
-    const testimonials = [
-      { id: 't1', quote: 'Consiguió que el equipo dejara de ver las retrospectivas como un trámite y empezara a usarlas para decidir.', name: '[Nombre]', role: '[Cargo · Empresa]', bg: 'rgba(255,255,255,.55)', fg: '#121735' },
-      { id: 't2', quote: 'Su forma de facilitar hace que todas las voces se escuchen, incluso en las conversaciones más difíciles.', name: '[Nombre]', role: '[Cargo · Empresa]', bg: '#121735', fg: '#FBF8F3' },
-      { id: 't3', quote: 'Nos ayudó a priorizar con claridad y a comunicar mejor con negocio.', name: '[Nombre]', role: '[Cargo · Empresa]', bg: 'rgba(201,184,245,.5)', fg: '#121735' },
+    const tstyle = [
+      { bg: 'rgba(255,255,255,.55)', fg: '#121735' },
+      { bg: '#121735', fg: '#FBF8F3' },
+      { bg: 'rgba(201,184,245,.5)', fg: '#121735' },
     ];
+    const testimonials = D.quotes.map((quote, i) => ({ id: 't' + (i + 1), quote, name: D.tName, role: D.tRole, ...tstyle[i] }));
 
-    const topics = ['Scrum Master', 'Agile Coaching', 'Formación', 'Transformación'].map(label => {
-      const on = !!this.state.topics[label];
+    // la selección se guarda por índice, así sobrevive al cambio de idioma
+    const topics = D.topics.map((label, i) => {
+      const on = !!this.state.topics[i];
       return { label, on, bg: on ? '#121735' : '#fff', fg: on ? '#FBF8F3' : '#121735', border: on ? '#121735' : 'rgba(18,23,53,.15)',
-        toggle: () => this.setState(s => ({ topics: { ...s.topics, [label]: !s.topics[label] } })) };
+        toggle: () => this.setState(s => ({ topics: { ...s.topics, [i]: !s.topics[i] } })) };
     });
 
     const bars = [34,48,42,60,66,78,92].map((v,i,a)=>({h:v+'%',bg:i===a.length-1?'#fff':'rgba(18,23,53,.28)'}));
     const sprint = Array.from({length:14},(_,i)=>{const wd=i%7,we=wd>4,key=i===0||i===11,today=i===3;return {label:i+1,bg:today?'#121735':key?'#8B5CF6':we?'transparent':'#EFE4FF',fg:today||key?'#FBF8F3':we?'#8A8EA8':'#121735'};});
-    const mq = ['Scrum','Kanban','Lean','Liderazgo colaborativo','Mejora continua','Design Thinking'];
+    const isEs = L === 'es';
     return {
-      heroZoom: this.state.heroZoom,
-      marquee: [...mq, ...mq], bars, sprint, waves, chips, showChips: this.props.showChips ?? true, expertise, steps,
+      t, heroZoom: this.state.heroZoom,
+      bars, sprint, showChips: this.props.showChips ?? true, expertise, steps,
       progress: (step / 3 * 100) + '%',
       current: { n: steps[step].n, title: cur[0], short: cur[1], items: cur[2] },
       projects, tools, certs, testimonials, topics,
       sent: this.state.sent, notSent: !this.state.sent,
-      name: this.state.name, firstName: (this.state.name || '').split(' ')[0] || 'por tu mensaje',
+      name: this.state.name, firstName: (this.state.name || '').split(' ')[0] || t.thanksFallback,
       onName: e => this.setState({ name: e.target.value }),
       submit: e => { e.preventDefault(); this.setState({ sent: true }); },
       reset: () => this.setState({ sent: false, name: '', topics: {} }),
+      isEs, isEn: !isEs,
+      langX: isEs ? '0%' : '100%',
+      esColor: isEs ? '#FBF8F3' : '#4A4F6E',
+      enColor: isEs ? '#4A4F6E' : '#FBF8F3',
+      setEs: () => this.setLang('es'),
+      setEn: () => this.setLang('en'),
     };
   }
 }
+
+/* ---------------- idioma ---------------- */
+function initialLang() {
+  try {
+    const q = new URLSearchParams(location.search).get('lang');
+    if (q === 'es' || q === 'en') return q;
+    const saved = localStorage.getItem('jg-lang');
+    if (saved === 'es' || saved === 'en') return saved;
+  } catch (e) {}
+  return /^es\b/i.test(navigator.language || '') ? 'es' : (/^en\b/i.test(navigator.language || '') ? 'en' : 'es');
+}
+function applyLang(lang, animate) {
+  const t = UI[lang];
+  document.documentElement.lang = lang;
+  document.title = t.title;
+  const md = document.querySelector('meta[name="description"]');
+  if (md) md.setAttribute('content', t.desc);
+  try { localStorage.setItem('jg-lang', lang); } catch (e) {}
+  window.dispatchEvent(new CustomEvent('langchange', { detail: { lang, animate } }));
+}
+
+const ICONS = [
+  'M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4',
+  'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0',
+  'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4M8 14h3',
+  'M3 12a9 9 0 1 0 3-6.7M3 4v5h5M12 8v4l3 2',
+  'M12 3v2M12 19v2M3 12h2M19 12h2M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z',
+  'M10 5a2 2 0 1 0 4 0 2 2 0 1 0-4 0M3 19a2 2 0 1 0 4 0 2 2 0 1 0-4 0M17 19a2 2 0 1 0 4 0 2 2 0 1 0-4 0M12 7v5M12 12l-6 5M12 12l6 5',
+  'M5 21V4M5 4h11l-2 4 2 4H5',
+  'M4 5h10v7H8l-4 3zM10 15h6l4 3V9h-3',
+  'M3 17l6-6 4 4 8-8M15 7h6v6',
+  'M4 4h4v16H4zM10 4h4v10h-4zM16 4h4v6h-4z',
+];
+
+const UI = {
+  "es": {
+    "navAbout": "Sobre mí",
+    "navApproach": "Enfoque",
+    "navProjects": "Proyectos",
+    "homeAria": "Jenny Guzman, inicio",
+    "talk": "Hablemos",
+    "langLabel": "Idioma",
+    "h1a": "Transformo equipos ",
+    "h1b": "y",
+    "h1c": "construyo resultados.",
+    "heroP": "Acompaño equipos y organizaciones en su adopción ágil, impulsando la colaboración y la entrega continua de valor.",
+    "heroCta": "Conoce mi experiencia",
+    "heroAlt": "Jenny Guzman, Scrum Master y Agile Coach",
+    "sprint2w": "Sprint · 2 semanas",
+    "wd0": "L",
+    "wd1": "M",
+    "wd2": "X",
+    "wd3": "J",
+    "wd4": "V",
+    "wd5": "S",
+    "wd6": "D",
+    "today": "Hoy",
+    "vtext": "SCRUM ✦ AGILE ✦ LEAN ✦ KANBAN ✦ MEJORA CONTINUA",
+    "scrollAria": "Bajar a Sobre mí",
+    "aboutAlt": "Jenny Guzman con los brazos cruzados",
+    "chipEmp": "Empatía",
+    "chipFac": "Facilitación",
+    "chipProb": "Resolución de problemas",
+    "liAria": "LinkedIn de Jenny Guzman",
+    "lbl1": "01 — Sobre mí",
+    "aboutH2": "Facilito equipos que aprenden, deciden y entregan juntos.",
+    "aboutP1": "Soy Scrum Master y Agile Coach. Mi trabajo es crear las condiciones para que los equipos colaboren con claridad, tomen decisiones informadas y mejoren de forma sostenida. [Edita este párrafo con tu trayectoria: sectores, tamaño de equipos y tipo de organizaciones.]",
+    "aboutP2": "Entiendo el liderazgo ágil como un servicio: escuchar antes de proponer, hacer visible lo invisible y retirar los obstáculos que impiden al equipo avanzar. [Añade aquí tu filosofía y visión personal.]",
+    "stat1": "años de experiencia",
+    "stat2": "equipos acompañados",
+    "stat3": "sectores",
+    "quote": "Agilidad no es hacer las cosas más rápido, es aprender a hacerlas mejor juntos.",
+    "lbl2": "02 — Expertise",
+    "expH2": "Competencias que sostienen equipos de alto rendimiento.",
+    "expP": "Del marco Scrum a la cultura de mejora continua: prácticas concretas, aplicadas al contexto de cada equipo.",
+    "mqLead": "Liderazgo colaborativo",
+    "mqImp": "Mejora continua",
+    "mqFac": "Facilitación",
+    "lbl3": "03 — Mi enfoque",
+    "appH2": "Un ciclo de acompañamiento, no una receta.",
+    "phase": "Fase",
+    "lbl4": "04 — Experiencia y proyectos",
+    "projH2": "Proyectos y procesos de transformación.",
+    "projP": "Contenido de ejemplo: reemplaza cada campo con información real del proyecto.",
+    "sectorYear": "[Sector · Año]",
+    "dtCtx": "Contexto y desafío",
+    "dtRole": "Rol desempeñado",
+    "dtRes": "Resultados e impacto",
+    "lbl5": "05 — Herramientas y metodologías",
+    "toolsH2": "Herramientas al servicio de las personas.",
+    "toolsP": "Elijo la herramienta según el equipo, nunca al revés. Estas son las que uso con más frecuencia.",
+    "legTools": "Herramientas",
+    "legMeth": "Metodologías",
+    "lbl6": "06 — Certificaciones",
+    "certH2": "Formación y credenciales.",
+    "lbl7": "07 — Testimonios",
+    "testH2": "Lo que dicen los equipos.",
+    "testNote": "Testimonios de ejemplo — reemplazar por reales",
+    "lbl8": "08 — Contacto",
+    "cH2a": "Creemos mejores formas de",
+    "cH2b": "trabajar juntos.",
+    "email": "Correo",
+    "name": "Nombre",
+    "msg": "Mensaje",
+    "thanks": "Gracias",
+    "reply48": "Te responderé en un plazo de 48 horas.",
+    "sendAnother": "Enviar otro mensaje",
+    "phName": "Tu nombre",
+    "phEmail": "nombre@empresa.com",
+    "helpQ": "¿En qué puedo ayudarte?",
+    "phMsg": "Cuéntame sobre tu equipo y el reto que enfrentan",
+    "send": "Enviar mensaje →",
+    "fA": "¿Tu equipo está listo para trabajar",
+    "fB": "mejor juntos",
+    "book": "Agenda una conversación",
+    "footP": "Liderazgo colaborativo, cultura ágil y mejora continua para equipos y organizaciones.",
+    "footNav": "Navegación",
+    "footContact": "Contacto",
+    "footAria": "Pie de página",
+    "footForm": "Formulario",
+    "topAria": "Volver arriba",
+    "title": "Jenny Guzman · Scrum Master & Agile Coach",
+    "desc": "Scrum Master y Agile Coach. Acompaño equipos y organizaciones en la adopción de metodologías ágiles.",
+    "thanksFallback": "por tu mensaje"
+  },
+  "en": {
+    "navAbout": "About me",
+    "navApproach": "Approach",
+    "navProjects": "Projects",
+    "homeAria": "Jenny Guzman, home",
+    "talk": "Let’s talk",
+    "langLabel": "Language",
+    "h1a": "I transform teams ",
+    "h1b": "and",
+    "h1c": "build results.",
+    "heroP": "I guide teams and organizations through their agile adoption, driving collaboration and the continuous delivery of value.",
+    "heroCta": "Explore my experience",
+    "heroAlt": "Jenny Guzman, Scrum Master and Agile Coach",
+    "sprint2w": "Sprint · 2 weeks",
+    "wd0": "M",
+    "wd1": "T",
+    "wd2": "W",
+    "wd3": "T",
+    "wd4": "F",
+    "wd5": "S",
+    "wd6": "S",
+    "today": "Today",
+    "vtext": "SCRUM ✦ AGILE ✦ LEAN ✦ KANBAN ✦ CONTINUOUS IMPROVEMENT",
+    "scrollAria": "Scroll to About me",
+    "aboutAlt": "Jenny Guzman with her arms crossed",
+    "chipEmp": "Empathy",
+    "chipFac": "Facilitation",
+    "chipProb": "Problem solving",
+    "liAria": "Jenny Guzman’s LinkedIn",
+    "lbl1": "01 — About me",
+    "aboutH2": "I facilitate teams that learn, decide and deliver together.",
+    "aboutP1": "I’m a Scrum Master and Agile Coach. My job is to create the conditions for teams to collaborate with clarity, make informed decisions and improve sustainably. [Edit this paragraph with your background: industries, team sizes and types of organizations.]",
+    "aboutP2": "I see agile leadership as a service: listening before proposing, making the invisible visible and removing the obstacles that keep the team from moving forward. [Add your personal philosophy and vision here.]",
+    "stat1": "years of experience",
+    "stat2": "teams coached",
+    "stat3": "industries",
+    "quote": "Agility isn’t about doing things faster, it’s about learning to do them better together.",
+    "lbl2": "02 — My Expertise",
+    "expH2": "Skills that sustain high-performing teams.",
+    "expP": "From the Scrum framework to a culture of continuous improvement: concrete practices, applied to each team’s context.",
+    "mqLead": "Collaborative leadership",
+    "mqImp": "Continuous improvement",
+    "mqFac": "Facilitation",
+    "lbl3": "03 — My Approach",
+    "appH2": "A coaching cycle, not a recipe.",
+    "phase": "Phase",
+    "lbl4": "04 — Experience & Projects",
+    "projH2": "Projects and transformation journeys.",
+    "projP": "Sample content: replace each field with real project information.",
+    "sectorYear": "[Industry · Year]",
+    "dtCtx": "Context & challenge",
+    "dtRole": "Role",
+    "dtRes": "Results & impact",
+    "lbl5": "05 — Tools & Methodologies",
+    "toolsH2": "Tools in service of people.",
+    "toolsP": "I choose the tool to fit the team, never the other way around. These are the ones I use most often.",
+    "legTools": "Tools",
+    "legMeth": "Methodologies",
+    "lbl6": "06 — Certifications",
+    "certH2": "Education and credentials.",
+    "lbl7": "07 — Testimonials",
+    "testH2": "What teams say.",
+    "testNote": "Sample testimonials — replace with real ones",
+    "lbl8": "08 — Contact",
+    "cH2a": "Let’s create better ways of",
+    "cH2b": "working together.",
+    "email": "Email",
+    "name": "Name",
+    "msg": "Message",
+    "thanks": "Thank you",
+    "reply48": "I’ll get back to you within 48 hours.",
+    "sendAnother": "Send another message",
+    "phName": "Your name",
+    "phEmail": "name@company.com",
+    "helpQ": "How can I help you?",
+    "phMsg": "Tell me about your team and the challenge you’re facing",
+    "send": "Send message →",
+    "fA": "Is your team ready to work",
+    "fB": "better together",
+    "book": "Book a conversation",
+    "footP": "Collaborative leadership, agile culture and continuous improvement for teams and organizations.",
+    "footNav": "Navigation",
+    "footContact": "Contact",
+    "footAria": "Footer",
+    "footForm": "Form",
+    "topAria": "Back to top",
+    "title": "Jenny Guzman · Scrum Master & Agile Coach",
+    "desc": "Scrum Master and Agile Coach. I help teams and organizations adopt agile ways of working.",
+    "thanksFallback": "for your message"
+  }
+};
+
+const DATA = {
+  es: {
+    expertise: [
+      ['Scrum Framework', 'Roles, eventos y artefactos aplicados con sentido, no como checklist.'],
+      ['Agile Coaching', 'Acompañamiento a equipos y líderes para desarrollar autonomía.'],
+      ['Sprint Planning', 'Objetivos de sprint claros y compromisos realistas.'],
+      ['Sprint Retrospectives', 'Espacios seguros para reflexionar y acordar mejoras accionables.'],
+      ['Daily Scrum Facilitation', 'Dailies breves y enfocadas en el objetivo del sprint.'],
+      ['Stakeholder Management', 'Alineación de expectativas y comunicación transparente.'],
+      ['Team Leadership', 'Liderazgo de servicio que impulsa la responsabilidad compartida.'],
+      ['Conflict Resolution', 'Mediación y conversaciones difíciles con empatía y foco.'],
+      ['Continuous Improvement', 'Métricas útiles y experimentos pequeños para aprender rápido.'],
+      ['Kanban & Lean', 'Flujo visible, límites de WIP y eliminación de desperdicio.'],
+    ],
+    steps: [
+      ['Discover', 'Comprender el equipo y sus necesidades.', ['Observación de ceremonias y dinámicas actuales', 'Entrevistas con equipo, Product Owner y stakeholders', 'Diagnóstico de madurez ágil y puntos de dolor']],
+      ['Align', 'Definir objetivos y prioridades.', ['Visión y objetivos compartidos', 'Acuerdos de trabajo y Definition of Done', 'Backlog priorizado por valor']],
+      ['Facilitate', 'Acompañar ceremonias y eliminar impedimentos.', ['Facilitación de planning, daily, review y retro', 'Gestión activa de impedimentos', 'Coaching individual a roles clave']],
+      ['Improve', 'Medir resultados y promover aprendizaje continuo.', ['Métricas de flujo: lead time, throughput, predictibilidad', 'Experimentos de mejora en cada retrospectiva', 'Transferencia de prácticas para la autonomía del equipo']],
+    ],
+    projectName: n => `[Nombre del proyecto 0${n}]`,
+    project: {
+      context: '[Describe la organización, la situación de partida y el principal desafío del equipo.]',
+      role: '[Scrum Master / Agile Coach — alcance, número de equipos y responsabilidades.]',
+      result: '[Resultado medible y verificable: p. ej. evolución del lead time, predictibilidad o satisfacción del equipo.]',
+    },
+    kindTool: 'Herramienta', kindMethod: 'Método',
+    certs: [
+      ['CERT', '[Nombre de la certificación]', '[Entidad emisora · Año]'],
+      ['CERT', '[Nombre de la certificación]', '[Entidad emisora · Año]'],
+      ['EDU', '[Título académico]', '[Universidad · Año]'],
+      ['CURSO', '[Formación complementaria]', '[Institución · Año]'],
+    ],
+    quotes: [
+      'Consiguió que el equipo dejara de ver las retrospectivas como un trámite y empezara a usarlas para decidir.',
+      'Su forma de facilitar hace que todas las voces se escuchen, incluso en las conversaciones más difíciles.',
+      'Nos ayudó a priorizar con claridad y a comunicar mejor con negocio.',
+    ],
+    tName: '[Nombre]', tRole: '[Cargo · Empresa]',
+    topics: ['Scrum Master', 'Agile Coaching', 'Formación', 'Transformación'],
+  },
+  en: {
+    expertise: [
+      ['Scrum Framework', 'Roles, events and artifacts applied with purpose, not as a checklist.'],
+      ['Agile Coaching', 'Coaching teams and leaders to build autonomy.'],
+      ['Sprint Planning', 'Clear sprint goals and realistic commitments.'],
+      ['Sprint Retrospectives', 'Safe spaces to reflect and agree on actionable improvements.'],
+      ['Daily Scrum Facilitation', 'Short dailies focused on the sprint goal.'],
+      ['Stakeholder Management', 'Aligned expectations and transparent communication.'],
+      ['Team Leadership', 'Servant leadership that drives shared ownership.'],
+      ['Conflict Resolution', 'Mediation and difficult conversations with empathy and focus.'],
+      ['Continuous Improvement', 'Useful metrics and small experiments to learn fast.'],
+      ['Kanban & Lean', 'Visible flow, WIP limits and waste removal.'],
+    ],
+    steps: [
+      ['Discover', 'Understand the team and its needs.', ['Observing current ceremonies and dynamics', 'Interviews with the team, Product Owner and stakeholders', 'Agile maturity assessment and pain points']],
+      ['Align', 'Define goals and priorities.', ['Shared vision and goals', 'Working agreements and Definition of Done', 'Backlog prioritized by value']],
+      ['Facilitate', 'Support ceremonies and remove impediments.', ['Facilitating planning, daily, review and retro', 'Active impediment management', 'One-on-one coaching for key roles']],
+      ['Improve', 'Measure results and foster continuous learning.', ['Flow metrics: lead time, throughput, predictability', 'Improvement experiments in every retrospective', 'Handing over practices for team autonomy']],
+    ],
+    projectName: n => `[Project name 0${n}]`,
+    project: {
+      context: '[Describe the organization, the starting point and the team’s main challenge.]',
+      role: '[Scrum Master / Agile Coach — scope, number of teams and responsibilities.]',
+      result: '[Measurable, verifiable result: e.g. lead time trend, predictability or team satisfaction.]',
+    },
+    kindTool: 'Tool', kindMethod: 'Method',
+    certs: [
+      ['CERT', '[Certification name]', '[Issuing body · Year]'],
+      ['CERT', '[Certification name]', '[Issuing body · Year]'],
+      ['EDU', '[Academic degree]', '[University · Year]'],
+      ['COURSE', '[Additional training]', '[Institution · Year]'],
+    ],
+    quotes: [
+      'She got the team to stop seeing retrospectives as a formality and start using them to make decisions.',
+      'Her way of facilitating makes every voice heard, even in the toughest conversations.',
+      'She helped us prioritize with clarity and communicate better with the business.',
+    ],
+    tName: '[Name]', tRole: '[Role · Company]',
+    topics: ['Scrum Master', 'Agile Coaching', 'Training', 'Transformation'],
+  },
+};
 </script>
 
 

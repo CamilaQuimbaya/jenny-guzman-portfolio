@@ -40,28 +40,54 @@
 
   /* ---------------- menú móvil ---------------- */
   function setupMobileMenu() {
-    var links = [['#sobre-mi', 'Sobre mí'], ['#expertise', 'Expertise'], ['#enfoque', 'Enfoque'], ['#proyectos', 'Proyectos'], ['#herramientas', 'Herramientas'], ['#testimonios', 'Testimonios'], ['#contacto', 'Contacto']];
+    var L = {
+      es: { links: ['Sobre mí', 'Expertise', 'Enfoque', 'Proyectos', 'Herramientas', 'Testimonios', 'Contacto'], talk: 'Hablemos', open: 'Abrir menú', close: 'Cerrar menú', menu: 'Menú', lang: 'Idioma' },
+      en: { links: ['About me', 'Expertise', 'Approach', 'Projects', 'Tools', 'Testimonials', 'Contact'], talk: 'Let’s talk', open: 'Open menu', close: 'Close menu', menu: 'Menu', lang: 'Language' },
+    };
+    var ids = ['#sobre-mi', '#expertise', '#enfoque', '#proyectos', '#herramientas', '#testimonios', '#contacto'];
+    var cur = function () { return root.lang === 'en' ? 'en' : 'es'; };
     var fab = document.createElement('button');
     fab.className = 'm-fab'; fab.type = 'button';
     fab.setAttribute('aria-label', 'Abrir menú'); fab.setAttribute('aria-expanded', 'false'); fab.setAttribute('aria-controls', 'm-menu');
     fab.innerHTML = '<span></span><span></span>';
     var menu = document.createElement('nav');
-    menu.className = 'm-menu'; menu.id = 'm-menu'; menu.setAttribute('aria-label', 'Menú');
+    menu.className = 'm-menu'; menu.id = 'm-menu';
     var linkedin = (document.querySelector('.hero-nav a[href*="linkedin"]') || {}).href || 'https://www.linkedin.com/';
-    menu.innerHTML = '<span class="m-gfx" aria-hidden="true"></span>' + links.map(function (l, i) {
-      return '<a class="m-link" href="' + l[0] + '" style="transition-delay:' + (180 + i * 60) + 'ms"><i>0' + (i + 1) + '</i>' + l[1] + '</a>';
-    }).join('') + '<div class="m-menu-foot"><a href="' + linkedin + '">LinkedIn</a><a class="cta" href="#contacto">Hablemos</a></div>';
+    menu.innerHTML = '<span class="m-gfx" aria-hidden="true"></span>' + ids.map(function (id, i) {
+      return '<a class="m-link" href="' + id + '" style="transition-delay:' + (180 + i * 60) + 'ms"><i>0' + (i + 1) + '</i><span></span></a>';
+    }).join('') + '<div class="m-menu-foot"><a href="' + linkedin + '">LinkedIn</a><a class="cta" href="#contacto"></a></div>' +
+      '<div class="m-lang" role="group"><button type="button" data-l="es" lang="es">ES · Español</button><button type="button" data-l="en" lang="en">EN · English</button></div>';
+    var paint = function () {
+      var d = L[cur()];
+      menu.querySelectorAll('.m-link span').forEach(function (s, i) { s.textContent = d.links[i]; });
+      menu.querySelector('.cta').textContent = d.talk;
+      menu.setAttribute('aria-label', d.menu);
+      menu.querySelector('.m-lang').setAttribute('aria-label', d.lang);
+      menu.querySelectorAll('.m-lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.l === cur())); });
+      fab.setAttribute('aria-label', root.classList.contains('m-open') ? d.close : d.open);
+    };
+    menu.querySelectorAll('.m-lang button').forEach(function (b) {
+      b.addEventListener('click', function () { if (window.__setLang) window.__setLang(b.dataset.l); });
+    });
+    addEventListener('langchange', function (e) {
+      paint();
+      if (e.detail && e.detail.animate && !reduce) {
+        root.classList.remove('lang-swap'); void root.offsetWidth; root.classList.add('lang-swap');
+        clearTimeout(paint.t); paint.t = setTimeout(function () { root.classList.remove('lang-swap'); }, 650);
+      }
+    });
     document.body.appendChild(menu);
     document.body.appendChild(fab);
     root.classList.add('has-mfab');
     var set = function (open) {
       root.classList.toggle('m-open', open);
       fab.setAttribute('aria-expanded', String(open));
-      fab.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      fab.setAttribute('aria-label', open ? L[cur()].close : L[cur()].open);
       root.style.overflow = open ? 'hidden' : '';
     };
     fab.addEventListener('click', function () { set(!root.classList.contains('m-open')); });
     menu.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+    paint();
     addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
     addEventListener('resize', function () { if (innerWidth > 760) set(false); });
     // El botón se esconde al bajar (para no tapar el texto) y vuelve al subir
