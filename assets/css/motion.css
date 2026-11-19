@@ -140,7 +140,6 @@ html, body { overflow-x: clip; }
 .orbit-b i { position: absolute; border-radius: 50%; }
 .orbit-b i:nth-child(1) { bottom: -5px; left: 50%; width: 10px; height: 10px; margin-left: -5px; background: #121735; }
 .orbit-b i:nth-child(2) { left: 14.6%; top: 14.6%; width: 12px; height: 12px; margin: -6px 0 0 -6px; background: #F0A8E0; box-shadow: 0 0 0 5px rgba(240,168,224,.25); }
-.orbit-text { position: absolute; left: -13%; top: -13%; width: 126%; height: 126%; pointer-events: none; animation: spin 70s linear infinite; }
 
 /* ---------- grafismos sección oscura ---------- */
 .dark-gfx { position: absolute; inset: 0; pointer-events: none; overflow: hidden; border-radius: inherit; }
@@ -259,8 +258,7 @@ html, body { overflow-x: clip; }
   .hero-copy { gap: 20px !important; }
   .hero-copy h1 { font-size: 34px !important; }
   .hero-visual { width: 100% !important; max-width: 360px; margin: 0 auto; }
-  .orbit-text { display: none; }
-  .orbit-b { inset: -1%; }
+    .orbit-b { inset: -1%; }
   .hero-visual [data-float] { zoom: .78; }
   .hero-visual [data-float="0"] { left: -4% !important; top: -2% !important; }
   .hero-visual [data-float="2"] { right: -2% !important; top: 2% !important; }
