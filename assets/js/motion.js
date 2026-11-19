@@ -53,6 +53,7 @@
     }).join('') + '<div class="m-menu-foot"><a href="' + linkedin + '">LinkedIn</a><a class="cta" href="#contacto">Hablemos</a></div>';
     document.body.appendChild(menu);
     document.body.appendChild(fab);
+    root.classList.add('has-mfab');
     var set = function (open) {
       root.classList.toggle('m-open', open);
       fab.setAttribute('aria-expanded', String(open));

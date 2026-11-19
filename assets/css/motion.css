@@ -251,7 +251,7 @@ html, body { overflow-x: clip; }
 
   /* nav: solo logo, los links viven en el menú */
   .hero-nav { padding: 22px 20px 6px !important; }
-  .hero-nav > div { display: none !important; }
+  .has-mfab .hero-nav > div { display: none !important; }
 
   /* hero */
   .hero-card { min-height: auto !important; border-radius: 28px !important; }
