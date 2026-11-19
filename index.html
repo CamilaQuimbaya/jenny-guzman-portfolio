@@ -226,7 +226,7 @@ a:hover{color:#6D3FC9}
       <span class="hg-meta"><b>JG</b> / Agile Coach — 2026</span>
     </div>
     <a href="#sobre-mi" class="scroll-cue" aria-label="Bajar a Sobre mí"><span class="sc-mouse"><i></i></span><span>Scroll</span></a>
-    <nav data-intro="0" style="position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px 32px;padding:28px clamp(20px,5vw,64px)">
+    <nav data-intro="0" class="hero-nav" style="position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px 32px;padding:28px clamp(20px,5vw,64px)">
       <a href="#top" aria-label="Jenny Guzman, inicio" style="display:flex;align-items:center;gap:12px;color:#121735">
         <span style="position:relative;width:46px;height:46px;flex:none">
           <svg sc-camel-view-box="0 0 46 46" width="46" height="46" aria-hidden="true">
@@ -275,7 +275,7 @@ a:hover{color:#6D3FC9}
         <div style="position:absolute;inset:0;clip-path:inset(-30% -30% 50% -30%);pointer-events:none">
           <img src="assets/img/jenny-hero.png" alt="" aria-hidden="true" style="position:absolute;left:50%;top:-14%;height:124%;transform:translateX(-50%);display:block;filter:saturate(.7) hue-rotate(-8deg) brightness(1.02)">
         </div>
-        <div style="position:absolute;left:16%;top:54%;width:88px;height:88px;z-index:2" aria-hidden="true">
+        <div class="hv-badge" style="position:absolute;left:16%;top:54%;width:88px;height:88px;z-index:2" aria-hidden="true">
           <svg sc-camel-view-box="0 0 120 120" width="88" height="88"><defs><path id="badgeCircle" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"></path></defs><circle cx="60" cy="60" r="58" fill="#121735"></circle><text style="font:600 10.5px 'Poppins',sans-serif;letter-spacing:3.2px" fill="#EFE4FF"><textPath href="#badgeCircle">SCRUM MASTER · AGILE COACH · </textPath></text><path d="M60 46v28M46 60h28M50 50l20 20M70 50L50 70" stroke="#C4A8FF" stroke-width="2.4" stroke-linecap="round"></path></svg>
         </div>
         <sc-if value="{{ showChips }}" hint-placeholder-val="{{ true }}">
@@ -349,7 +349,7 @@ a:hover{color:#6D3FC9}
       <h2 style="margin:0;font:600 clamp(30px,3.2vw,44px)/1.1 'Poppins',sans-serif;letter-spacing:-.03em;text-wrap:balance">Facilito equipos que aprenden, deciden y entregan juntos.</h2>
       <p style="margin:0;font-size:16px;line-height:1.75;color:#3B4062;text-wrap:pretty">Soy Scrum Master y Agile Coach. Mi trabajo es crear las condiciones para que los equipos colaboren con claridad, tomen decisiones informadas y mejoren de forma sostenida. [Edita este párrafo con tu trayectoria: sectores, tamaño de equipos y tipo de organizaciones.]</p>
       <p style="margin:0;font-size:16px;line-height:1.75;color:#3B4062;text-wrap:pretty">Entiendo el liderazgo ágil como un servicio: escuchar antes de proponer, hacer visible lo invisible y retirar los obstáculos que impiden al equipo avanzar. [Añade aquí tu filosofía y visión personal.]</p>
-      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+      <div class="stats" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
         <div style="padding:18px;border-radius:18px;background:rgba(255,255,255,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.85);display:flex;flex-direction:column;gap:6px"><span style="font:600 28px 'Poppins',sans-serif;color:#121735">[X]+</span><span style="font-size:13px;color:#3B4062">años de experiencia</span></div>
         <div style="padding:18px;border-radius:18px;background:rgba(255,255,255,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.85);display:flex;flex-direction:column;gap:6px"><span style="font:600 28px 'Poppins',sans-serif;color:#121735">[X]</span><span style="font-size:13px;color:#3B4062">equipos acompañados</span></div>
         <div style="padding:18px;border-radius:18px;background:rgba(255,255,255,.55);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.85);display:flex;flex-direction:column;gap:6px"><span style="font:600 28px 'Poppins',sans-serif;color:#121735">[X]</span><span style="font-size:13px;color:#3B4062">sectores</span></div>
@@ -374,7 +374,7 @@ a:hover{color:#6D3FC9}
       </div>
       <p style="margin:0;max-width:360px;color:#3B4062;line-height:1.6">Del marco Scrum a la cultura de mejora continua: prácticas concretas, aplicadas al contexto de cada equipo.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:16px">
+    <div class="exp-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:16px">
       <sc-for list="{{ expertise }}" as="e" hint-placeholder-count="10">
         <article data-reveal="" style="position:relative;display:flex;flex-direction:column;gap:14px;padding:26px;min-height:220px;border-radius:24px;background:rgba(255,255,255,.65);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.9);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s;cursor:default" style-hover="transform:translateY(-6px);box-shadow:0 24px 50px -28px rgba(91,79,201,.55);border-color:rgba(91,79,201,.35)">
           <div style="display:flex;justify-content:space-between;align-items:flex-start">
@@ -414,8 +414,8 @@ a:hover{color:#6D3FC9}
       <h2 style="margin:0;font:600 clamp(32px,3.6vw,48px)/1.08 'Poppins',sans-serif;letter-spacing:-.03em">Un ciclo de acompañamiento, no una receta.</h2>
     </div>
 
-    <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
-      <div style="position:absolute;left:28px;right:28px;top:27px;height:2px;background:rgba(251,248,243,.15)">
+    <div class="steps-grid" style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
+      <div class="steps-line" style="position:absolute;left:28px;right:28px;top:27px;height:2px;background:rgba(251,248,243,.15)">
         <div style="height:100%;width:{{ progress }};background:linear-gradient(90deg,#C9C2F5,#8B5CF6);transition:width .6s cubic-bezier(.2,.8,.2,1)"></div>
       </div>
       <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
@@ -490,7 +490,7 @@ a:hover{color:#6D3FC9}
         <span style="display:flex;align-items:center;gap:8px"><span style="width:10px;height:10px;border-radius:3px;background:#8B5CF6"></span>Metodologías</span>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+    <div class="tools-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
       <sc-for list="{{ tools }}" as="t" hint-placeholder-count="9">
         <div data-reveal="" style="aspect-ratio:1;border-radius:24px;padding:18px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.7);display:flex;flex-direction:column;justify-content:space-between;background:{{ t.bg }};color:{{ t.fg }};transition:transform .35s cubic-bezier(.2,.8,.2,1)" style-hover="transform:scale(1.04) rotate(-1.5deg)">
           <span style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;opacity:.75">{{ t.kind }}</span>
@@ -539,7 +539,7 @@ a:hover{color:#6D3FC9}
         <figure data-reveal="" style="margin:0;display:flex;flex-direction:column;justify-content:space-between;gap:32px;padding:32px;border-radius:28px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.7);background:{{ t.bg }};color:{{ t.fg }}">
           <blockquote style="margin:0;font:400 clamp(21px,1.8vw,25px)/1.35 'Poppins',sans-serif;text-wrap:pretty">“{{ t.quote }}”</blockquote>
           <figcaption style="display:flex;align-items:center;gap:14px">
-            <span style="width:44px;height:44px;border-radius:50%;overflow:hidden;flex:none"><image-slot id="{{ t.id }}" shape="circle" placeholder="" style="width:44px;height:44px"></image-slot></span>
+            <span class="t-avatar" style="width:44px;height:44px;border-radius:50%;overflow:hidden;flex:none"><image-slot id="{{ t.id }}" shape="circle" placeholder="" style="width:44px;height:44px"></image-slot></span>
             <span style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:15px">{{ t.name }}</span><span style="font-size:13px;opacity:.8">{{ t.role }}</span></span>
           </figcaption>
         </figure>
@@ -550,7 +550,7 @@ a:hover{color:#6D3FC9}
 
 <!-- CONTACT -->
 <section id="contacto" style="position:relative;z-index:1;padding:clamp(20px,3vw,40px)">
-  <div data-scene="" style="max-width:1360px;margin:0 auto;border-radius:36px;background:radial-gradient(800px 500px at 0% 100%,rgba(143,132,232,.45),transparent 60%),radial-gradient(600px 400px at 100% 0%,rgba(139,92,246,.28),transparent 60%),#121735;color:#FBF8F3;padding:clamp(40px,7vw,96px) clamp(24px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,6vw,80px)">
+  <div data-scene="" class="contact-card" style="max-width:1360px;margin:0 auto;border-radius:36px;background:radial-gradient(800px 500px at 0% 100%,rgba(143,132,232,.45),transparent 60%),radial-gradient(600px 400px at 100% 0%,rgba(139,92,246,.28),transparent 60%),#121735;color:#FBF8F3;padding:clamp(40px,7vw,96px) clamp(24px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,6vw,80px)">
     <div data-reveal="" style="display:flex;flex-direction:column;gap:28px">
       <span style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#C4A8FF">08 — Contact</span>
       <h2 style="margin:0;font:600 clamp(40px,5vw,68px)/1.0 'Poppins',sans-serif;letter-spacing:-.035em;text-wrap:balance">Let’s create better ways of <span style="font-weight:600;color:#C9C2F5">working together.</span></h2>
@@ -559,7 +559,7 @@ a:hover{color:#6D3FC9}
         <a href="https://www.linkedin.com/" style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid rgba(251,248,243,.15);color:#FBF8F3;font-size:18px;transition:padding .3s" style-hover="padding-left:8px;color:#C4A8FF"><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#C8CBE0">LinkedIn</span>linkedin.com/in/tu-perfil</span><span>↗</span></a>
       </div>
     </div>
-    <div data-reveal="" style="border-radius:28px;background:rgba(247,242,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff;color:#121735;padding:clamp(24px,3vw,40px)">
+    <div data-reveal="" class="form-card" style="border-radius:28px;background:rgba(247,242,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff;color:#121735;padding:clamp(24px,3vw,40px)">
       <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
         <div style="min-height:380px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:16px">
           <span style="width:56px;height:56px;border-radius:50%;background:#EEEBFC;display:grid;place-items:center;font-size:24px;color:#5B4FC9">✓</span>
@@ -592,7 +592,7 @@ a:hover{color:#6D3FC9}
       </sc-if>
     </div>
   </div>
-  <footer style="position:relative;max-width:1360px;margin:20px auto 0;border-radius:36px;overflow:hidden;background:linear-gradient(160deg,rgba(30,20,70,.92),rgba(18,23,53,.96));backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1);color:#FBF8F3;padding:clamp(36px,5vw,64px) clamp(24px,5vw,64px) 28px">
+  <footer class="site-footer" style="position:relative;max-width:1360px;margin:20px auto 0;border-radius:36px;overflow:hidden;background:linear-gradient(160deg,rgba(30,20,70,.92),rgba(18,23,53,.96));backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1);color:#FBF8F3;padding:clamp(36px,5vw,64px) clamp(24px,5vw,64px) 28px">
     <span aria-hidden="true" style="position:absolute;left:-120px;top:-160px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.55),transparent 70%)"></span>
     <span aria-hidden="true" style="position:absolute;right:-100px;bottom:-200px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(126,155,240,.35),transparent 70%)"></span>
     <div style="position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;padding-bottom:clamp(32px,4vw,48px);border-bottom:1px solid rgba(255,255,255,.12)">
@@ -600,7 +600,7 @@ a:hover{color:#6D3FC9}
       <a href="#contacto" style="display:inline-flex;align-items:center;gap:12px;padding:16px 26px;border-radius:999px;background:#FBF8F3;color:#121735;font:600 15px 'Poppins',sans-serif;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(196,168,255,.9);color:#121735">Agenda una conversación <span aria-hidden="true">→</span></a>
     </div>
     <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:36px;padding:clamp(32px,4vw,48px) 0">
-      <div style="display:flex;flex-direction:column;gap:16px;grid-column:span 2;min-width:0">
+      <div class="foot-brand" style="display:flex;flex-direction:column;gap:16px;grid-column:span 2;min-width:0">
         <div style="display:flex;align-items:center;gap:12px">
           <span style="width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#A78BFA,#6D3FC9 55%,#121735);display:grid;place-items:center;font:600 15px 'Poppins',sans-serif;letter-spacing:.5px;border:1px solid rgba(255,255,255,.2)">JG</span>
           <span style="display:flex;flex-direction:column;line-height:1.15"><span style="font:600 16px 'Poppins',sans-serif;letter-spacing:.08em">JENNY GUZMAN</span><span style="font:500 10.5px 'Poppins',sans-serif;letter-spacing:.18em;color:#C4A8FF">AGILE COACH</span></span>
@@ -616,7 +616,7 @@ a:hover{color:#6D3FC9}
         <a href="mailto:hola@tudominio.com" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">hola@tudominio.com</a><a href="https://www.linkedin.com/" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">LinkedIn</a><a href="#contacto" style="font-size:15px;color:#C8CBE0;transition:color .2s,padding .2s" style-hover="color:#fff;padding-left:4px">Formulario</a>
       </div>
     </div>
-    <div aria-hidden="true" style="position:relative;font:700 clamp(48px,11vw,170px)/.9 'Poppins',sans-serif;letter-spacing:-.04em;text-align:center;background:linear-gradient(180deg,rgba(196,168,255,.45),rgba(196,168,255,0) 85%);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none;white-space:nowrap;overflow:hidden">JENNY GUZMAN</div>
+    <div class="foot-word" aria-hidden="true" style="position:relative;font:700 clamp(48px,11vw,170px)/.9 'Poppins',sans-serif;letter-spacing:-.04em;text-align:center;background:linear-gradient(180deg,rgba(196,168,255,.45),rgba(196,168,255,0) 85%);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none;white-space:nowrap;overflow:hidden">JENNY GUZMAN</div>
     <div style="position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;color:#9AA0C4">
       <span>© 2026 Jenny Guzman · Scrum Master &amp; Agile Coach</span>
       <a href="#top" aria-label="Volver arriba" style="width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#FBF8F3;transition:background .25s,transform .25s" style-hover="background:#8B5CF6;transform:translateY(-3px);color:#fff">↑</a>

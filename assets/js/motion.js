@@ -30,12 +30,48 @@
     bar.id = 'scroll-progress';
     document.body.appendChild(bar);
 
+    setupMobileMenu();
     setupReveals();
     setupSpotlight();
     if (reduce) { onScrollProgressOnly(bar); return; }
     setupMagnetic();
     startLoop(bar);
   });
+
+  /* ---------------- menú móvil ---------------- */
+  function setupMobileMenu() {
+    var links = [['#sobre-mi', 'Sobre mí'], ['#expertise', 'Expertise'], ['#enfoque', 'Enfoque'], ['#proyectos', 'Proyectos'], ['#herramientas', 'Herramientas'], ['#testimonios', 'Testimonios'], ['#contacto', 'Contacto']];
+    var fab = document.createElement('button');
+    fab.className = 'm-fab'; fab.type = 'button';
+    fab.setAttribute('aria-label', 'Abrir menú'); fab.setAttribute('aria-expanded', 'false'); fab.setAttribute('aria-controls', 'm-menu');
+    fab.innerHTML = '<span></span><span></span>';
+    var menu = document.createElement('nav');
+    menu.className = 'm-menu'; menu.id = 'm-menu'; menu.setAttribute('aria-label', 'Menú');
+    var linkedin = (document.querySelector('.hero-nav a[href*="linkedin"]') || {}).href || 'https://www.linkedin.com/';
+    menu.innerHTML = '<span class="m-gfx" aria-hidden="true"></span>' + links.map(function (l, i) {
+      return '<a class="m-link" href="' + l[0] + '" style="transition-delay:' + (180 + i * 60) + 'ms"><i>0' + (i + 1) + '</i>' + l[1] + '</a>';
+    }).join('') + '<div class="m-menu-foot"><a href="' + linkedin + '">LinkedIn</a><a class="cta" href="#contacto">Hablemos</a></div>';
+    document.body.appendChild(menu);
+    document.body.appendChild(fab);
+    var set = function (open) {
+      root.classList.toggle('m-open', open);
+      fab.setAttribute('aria-expanded', String(open));
+      fab.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      root.style.overflow = open ? 'hidden' : '';
+    };
+    fab.addEventListener('click', function () { set(!root.classList.contains('m-open')); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+    addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+    addEventListener('resize', function () { if (innerWidth > 760) set(false); });
+    // El botón se esconde al bajar (para no tapar el texto) y vuelve al subir
+    var lastY = scrollY;
+    addEventListener('scroll', function () {
+      var y = scrollY;
+      if (Math.abs(y - lastY) < 8) return;
+      root.classList.toggle('fab-hide', y > lastY && y > 240 && !root.classList.contains('m-open'));
+      lastY = y;
+    }, { passive: true });
+  }
 
   /* ---------------- reveals ---------------- */
   function setupReveals() {
@@ -220,6 +256,7 @@
       var p = maxScroll > 0 ? scrollY / maxScroll : 0;
       bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
       var lag = scrollY - smoothY; // >0 bajando
+      var k = innerWidth < 760 ? 0.3 : 1; // en móvil el parallax es más sutil
 
       // 1) Escenas: entran desde abajo y al salir se quedan atrás (parallax)
       for (var i = 0; i < scenes.length; i++) {
@@ -228,8 +265,8 @@
         if (r.bottom < -vh * 0.2 || r.top > vh * 1.2) continue;
         var enter = easeOut(clamp((vh - r.top) / (vh * 0.7), 0, 1));
         var exit = clamp((vh * 0.55 - r.bottom) / (vh * 0.55), 0, 1);
-        var ty = (1 - enter) * 90 + exit * 140 + lag * 0.08;
-        var sc = 1 - exit * 0.07 + (1 - enter) * -0.03;
+        var ty = ((1 - enter) * 90 + exit * 140 + lag * 0.08) * k;
+        var sc = 1 - (exit * 0.07 + (1 - enter) * 0.03) * k;
         var v = '0 ' + ty.toFixed(1) + 'px';
         var k = v + sc.toFixed(4);
         if (k !== s.last) { s.el.style.translate = v; s.el.style.scale = sc.toFixed(4); s.last = k; }
@@ -239,8 +276,8 @@
       if (stage) {
         var rs = rect(stageBox, sy);
         var e2 = easeOut(clamp((vh - rs.top) / (vh * 0.85), 0, 1));
-        stage.style.scale = (0.9 + 0.1 * e2).toFixed(4);
-        stage.style.translate = '0 ' + ((1 - e2) * 60).toFixed(1) + 'px';
+        stage.style.scale = (1 - 0.1 * k * (1 - e2)).toFixed(4);
+        stage.style.translate = '0 ' + ((1 - e2) * 60 * k).toFixed(1) + 'px';
       }
 
       // 3) Elementos con profundidad ligada al scroll
@@ -249,7 +286,7 @@
         var rr = rect(d.box, sy);
         if (rr.bottom < -200 || rr.top > vh + 200) continue;
         var off = (rr.top + rr.height / 2) - vh / 2;
-        d.el.style.translate = '0 ' + (-off * d.f).toFixed(1) + 'px';
+        d.el.style.translate = '0 ' + clamp(-off * d.f, -60, 160).toFixed(1) + 'px';
       }
 
       // 4) Fondo fijo: cada mancha se mueve a distinta velocidad
